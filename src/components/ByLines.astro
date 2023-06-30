@@ -1,0 +1,11 @@
+---
+const { entry, entry: { persons } } = Astro.props
+---
+
+{persons && (
+  <div class="">
+    {persons.map(({url, full_name})=>(
+      <a href={url}>{full_name}</a>
+    ))}
+  </div>
+)}

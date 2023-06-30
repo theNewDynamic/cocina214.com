@@ -1,0 +1,37 @@
+---
+import { getSingletons, getStaffMembers } from "@data/sanity/api"
+import LayoutAbout from "@layouts/page/About.astro"
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const entries = await getSingletons()
+
+  return entries.map(entry => {
+    const slug = entry.slug
+    return {
+      params: {
+        singleton: slug
+      },
+      props: {
+        entry
+      }
+    }
+  })
+}
+
+let Layout
+let { entry } = Astro.props
+switch (entry.type) {
+  case 'pageAbout':
+    Layout = LayoutAbout
+    entry = {
+      ...entry,
+      persons: await getStaffMembers
+    }
+    break;
+  default:
+    break;
+}
+---
+
+<Layout {entry} />

@@ -1,0 +1,28 @@
+---
+import { socials } from '@data/site'
+import { Icon } from 'astro-icon'
+---
+<style>
+  [astro-icon]{
+    width: 2rem;
+    color: currentColor
+  }
+</style>
+<div class="flex items-center tnd-socials">
+  {socials.map(({name, url, icon = false}) => (
+    <a href={url} class:list={[
+        name,
+        "w-6 inline-block mx-2 hover:text-gray-500 link-transition no-underline transition-color mr-2 lg:pt-0  z-40"
+      ]}
+      title={name}
+      aria-label={`Follow us on ${name}`}
+    >
+      {icon && (
+        <Icon name={icon} />
+      )}
+      {!icon && (
+        name
+      )}
+    </a>
+  ))}
+</div>

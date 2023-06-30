@@ -1,0 +1,12 @@
+---
+const { video_id } = Astro.props
+import { getVideoService } from '@util/helpers'
+const service = getVideoService(video_id)
+---
+{video_id && service == "vimeo" && (
+  <iframe class="w-full aspect-video" src={`https://player.vimeo.com/video/${video_id}?title=0&byline=0&portrait=0`} frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+)}
+{video_id && service == "youtube" && (
+  <iframe class="w-full aspect-video" src={`https://www.youtube.com/embed/${video_id}`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+)}
+

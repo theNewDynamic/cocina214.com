@@ -1,0 +1,14 @@
+---
+import { marked } from 'marked'
+marked.use({
+  mangle: false,
+  headerIds: false,
+});
+let { text } = Astro.props
+if(text && (text.includes('*') || text.includes('_'))) {
+  text = marked.parseInline(text)
+}
+---
+{text && (
+  <span set:html={text}></span>
+)}

@@ -1,0 +1,7 @@
+---
+const { audience_id, title } = Astro.props.node
+import Form from '@components/newsletter/Form.astro'
+---
+<div class="my-8">
+  <Form {audience_id} heading={title} />
+</div>

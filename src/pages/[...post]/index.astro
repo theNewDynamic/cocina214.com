@@ -1,0 +1,23 @@
+---
+import { getPosts } from "@data/sanity/api"
+import { url_mapping } from "@data/site"
+import Layout from '@layouts/post/List.astro'
+
+export async function getStaticPaths() {
+  return [{
+    params: {
+      post: url_mapping.post || 'post',
+    },
+    props: {
+      entry: {
+        title: "News",
+        section: "News",
+        entries: await getPosts()
+      }
+    }
+  }]
+}
+
+const { entry } = Astro.props
+---
+<Layout {entry} />

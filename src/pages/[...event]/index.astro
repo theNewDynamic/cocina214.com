@@ -1,0 +1,23 @@
+---
+import { getEvents } from "@data/sanity/api"
+import { url_mapping } from "@data/site"
+import Layout from '@layouts/event/List.astro'
+
+export async function getStaticPaths() {
+  return [{
+    params: {
+      event: url_mapping.event || 'event',
+    },
+    props: {
+      entry: {
+        title: "Events",
+        section: "Events",
+        events: await getEvents()
+      }
+    }
+  }]
+}
+
+const { entry } = Astro.props
+---
+<Layout {entry} />

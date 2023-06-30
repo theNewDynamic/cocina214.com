@@ -1,0 +1,28 @@
+---
+const {future, past, classes = "bg-light-gray pa4"} = Astro.props
+import Title from '@components/Title.astro'
+import LiEvent from '@components/event/Li.astro';
+---
+
+<div class={classes}>
+  {!!future.length && (
+    <Title>
+      Upcoming Events
+    </Title>
+    <div class="gray">
+      {future.map(entry => (
+        <LiEvent {entry} />
+      ))}
+    </div>
+  )}
+  {!!past.length && (
+    <Title>
+      Past Events
+    </Title>
+    <div class="gray">
+      {past.map(entry => (
+        <LiEvent {entry} />
+      ))}
+    </div>
+  )}
+</div>

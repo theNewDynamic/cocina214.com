@@ -1,0 +1,25 @@
+---
+import { getPages } from "@data/sanity/api"
+import Layout from '@layouts/Single.astro'
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const entries = await getPages()
+
+  return entries.map(entry => {
+    const slug = entry.slug
+    return {
+      params: {
+        slug,
+      },
+      props: {
+        entry
+      }
+    }
+  })
+}
+
+const { entry } = Astro.props
+---
+<Layout {entry} />

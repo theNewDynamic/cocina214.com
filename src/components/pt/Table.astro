@@ -1,0 +1,23 @@
+---
+let { rows = [] } = Astro.props.node
+let headers = []
+if(rows.length > 1) {
+  headers = rows.shift().cells
+}
+---
+<table>
+  {headers.length && (
+    <tr>
+      {headers.map((cell, key) => (
+        <th set:html={cell}  {key}></th>
+      ))}
+    </tr>
+  )}
+  {rows.map((row, key) => (
+    <tr {key}>
+      {row.cells.map((cell, key) => (
+        <td set:html={cell} {key}></td>
+      ))}
+    </tr>
+  ))}
+</table>

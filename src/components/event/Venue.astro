@@ -1,0 +1,65 @@
+---
+const {title, address_1, address_2, city, state, zip, phone, country, link } = Astro.props.venue
+const metas = []
+let address = []
+if(address_1) {
+  address.push(address_1)
+}
+if(address_2) {
+  address.push(address_1)
+}
+if(address.length) {
+  metas.push({
+    label: 'Address',
+    value: address.join(', ')
+  })
+}
+if(city) {
+  metas.push({
+    label: 'City',
+    value: city
+  })
+}
+if(state) {
+  metas.push({
+    label: 'State',
+    value: state
+  })
+}
+if(zip) {
+  metas.push({
+    label: 'Zip',
+    value: zip
+  })
+}
+if(phone) {
+  metas.push({
+    label: 'Phone',
+    value: phone
+  })
+}
+if(country) {
+  metas.push({
+    label: 'Country',
+    value: country
+  })
+}
+
+---
+
+<address class="my-4">
+  <h3 class="text-lg font-bold mb-2">{title}</h3>
+    {metas.map(({label, value})=> (
+      value && (
+        <div class="text-sm">
+          <strong class="capitalize">{label}:</strong>
+          {label == "Link" && (
+            <a class="underline" href={value}>Website</a>
+          )}
+          {label != "Link" && (
+            value
+          )}
+        </div>
+      )
+    ))}
+</address>

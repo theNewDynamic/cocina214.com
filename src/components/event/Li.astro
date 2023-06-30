@@ -1,0 +1,11 @@
+---
+import Time from '@components/Time.astro'
+const { entry, entry: { title, time_start, subsection, url } } = Astro.props
+---
+<li class="list tl">
+  <a href={url} class="group bl brand-font bw2 mid-gray db f6 fw8 hover:text-white lh-title link mv4 pv1 w-100 border-none">
+    <Time time={time_start} classes="db f7 fw4 group-hover:text-white mid-gray mb1" />
+    <span class="db f7">{subsection}</span>
+    {title}
+  </a>
+</li>

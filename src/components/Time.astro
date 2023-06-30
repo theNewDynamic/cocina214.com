@@ -1,0 +1,10 @@
+---
+import { formatDate, formatTime } from '@util/helpers'
+const { time, classes } = Astro.props
+---
+
+<time class={classes} datetime={formatTime(time)} >
+  <slot>
+    {formatDate(time, 'long')}
+  </slot>
+</time>

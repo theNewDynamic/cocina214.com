@@ -1,0 +1,11 @@
+---
+import Li from '@components/post/Li.astro'
+const { block, block: { title, posts = [] } } = Astro.props
+---
+<div class="max-w-[83rem] mx-auto">
+  <div class="w-full sm:grid gap-8 grid-cols-2">
+    {posts.map((entry, index) => (
+      <Li layout="large" {entry} />
+    ))}
+  </div>
+</div>

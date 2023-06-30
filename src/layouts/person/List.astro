@@ -1,0 +1,21 @@
+---
+import Base from '@layouts/Base.astro'
+import FilterBy from '@components/FilterBy.astro'
+import Li from '@components/person/Li.astro'
+const { entry, entry: {title, entries}} = Astro.props
+---
+
+<Base {entry}>
+  <div id="filter" class="mw8 center">
+    <div class="my-8">
+      <FilterBy valueNames={["name"]} listClass="filtered-list" />
+    </div>
+    <section class="filtered-list" >
+      {entries.map(entry => (
+        <div class="list relative w-100  mb4 bg-white">
+          <Li {entry} />
+        </div>
+      ))}
+    </section>
+  </div>
+</Base>

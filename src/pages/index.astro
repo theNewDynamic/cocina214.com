@@ -1,0 +1,6 @@
+---
+import Layout from '@layouts/Home.astro'
+import { getHome } from '@data/sanity/api'
+const entry = await getHome()
+---
+<Layout {entry} />

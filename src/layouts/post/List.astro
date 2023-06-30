@@ -1,0 +1,18 @@
+---
+const { entry, entry: { title, entries, prev, next} } = Astro.props
+import Base from '@layouts/Base.astro'
+import Li from '@components/post/Li.astro'
+---
+<Base {entry}>
+  <div class="w-full pt-8 px-4 md:px-16">
+    <div class="w-full sm:grid gap-8 grid-cols-2">
+      {entries.map((entry, index) => (
+        <Li layout={!index ? "large" : "default"} {entry} />
+      ))}
+    </div>
+  </div>
+  <div class="w-full px-8 mb-32">
+    {prev ? <a data-prev class="underline" href={prev}>Previous</a> : <div>&nbsp;</div>}
+    {next ? <a data-next class="underline" href={next}>Next</a> : <div>&nbsp;</div>}
+  </div>
+</Base>

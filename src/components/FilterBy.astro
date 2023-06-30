@@ -1,0 +1,37 @@
+---
+const { 
+  copy = "Search", 
+  listClass = "filter-list",
+  inputClass = "search-input",
+  valueNames = ["title", "isbn", "author", "date", "genre"],
+  placeholder = "Type to Filter by name or keyword"
+
+} = Astro.props
+---
+
+<script is:inline src="/js/list.min.js"></script>
+  
+<script define:vars={{
+  listClass,
+  valueNames,
+}} 
+  is:inline
+>
+  var documentLoad = "DOMContentLoaded";
+  document.addEventListener(documentLoad, function() {
+    var options = {
+      valueNames,
+      listClass,
+      searchClass: "search-input"
+    };
+    var userList = new List('filter', options);
+  });
+</script>
+
+<label for="search" class="sr-only block text-2xl font-medium leading-6 text-gray-600">{copy}</label>
+<div class="relative mt-2 flex items-center">
+  <input class:list={[
+    inputClass,
+    "bg-left input-reset f4 bn ph2 pv2 w-100 db border border-gray-400"
+  ]} type="search" {placeholder} name="q" autocomplete="off" style="padding-left:1.5rem;background-image:url('/icons/icon-filter.svg');background-size:24px 24px;">
+</div>

@@ -1,0 +1,12 @@
+---
+const { url } = Astro.props.node
+const response = await fetch(url);
+const data = await response.json();
+const content = data.content;
+---
+{content && (
+  <div set:html={content}></div>
+)}
+
+
+

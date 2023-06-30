@@ -1,0 +1,24 @@
+---
+import Prose from "@components/Prose.astro";
+const  { title, links = [], copy, variant } = Astro.props.block
+---
+
+<div class:list={[
+  variant == "post" ? "mb-8" : "mb-32",
+  "max-w-2xl mx-auto"
+  ]}>
+  {!!copy && (
+  <div class="mx-auto prose lg:prose-lg max-w-none lg:max-w-none">
+    <Prose text={copy} />
+  </div>
+  )}
+  <>
+  {links && (
+    <div class="mx-auto mt-3">
+      {links.map(({copy, url})=>(
+        <a href={url}>{copy}</a>
+      ))}
+    </div>
+  )}
+  </>
+</div>

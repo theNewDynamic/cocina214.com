@@ -1,0 +1,68 @@
+---
+import Base from "@layouts/Base.astro"
+import Image from '@components/Image.astro'
+import Prose from "@components/Prose.astro";
+import LiEvent from '@components/event/Li.astro';
+const { entry, entry: { title, academic_year, chair, image, body, events_upcoming, events_past } } = Astro.props
+const has_events = events_upcoming.length || events_past.length
+---
+
+<Base {entry}>
+  <div class="flex flex-wrap">
+    <div class:list={[
+      !has_events ? "w-100 mw8 center" : "w-100 w-70-l"
+    ]}>
+      <article class="h-entry center cf mw7 pv5 ph3 ph4-ns">
+        <p class="b f5 gray helvetica tracked">
+          {academic_year && academic_year} {chair && chair.title}
+        </p>
+        <h1 class="f1">
+          {title}
+        </h1>
+        <section class="nested-copy-line-height lh-copy f4 nested-links nested-imgTK mid-gray">
+          {image && (
+            <Image {image} classes="fl mb2 mr3 mt2 mw5 shadow-5" alt={`Image from ${title}`} />
+          )}
+          {body && (
+            <div class="prose">
+              <Prose text={body} />
+            </div>
+          )}
+        </section>
+        {chair && (
+        <aside class="pa4 bg-light-gray">
+          <h2 class="font-bold text-xl mb-2">{chair.title}</h2>
+          {chair.body && (
+            <div class="dark-gray nested-copy-line-height">
+              <div class="prose">
+                <Prose text={chair.body} />
+              </div>
+            </div>
+          )}
+          <a href="/chairs/" class="accent-color b--gray ba black br2 dib hover-bg-gray hover-white f6 link mt3 ph3 pv2">See all chairs</a>
+        </aside>
+        )}
+      </article>
+    </div>
+    {!!has_events && (
+      <div class="bg-light-gray pa4 w-100 w-30-l">
+        {!!events_upcoming.length && (
+          <h2>Upcoming Events</h2>
+          <div class="gray">
+            {events_upcoming.map(entry => (
+              <LiEvent {entry} />
+            ))}
+          </div>
+        )}
+        {!!events_past.length && (
+          <h2>Past Events</h2>
+          <div class="gray">
+            {events_past.map(entry => (
+              <LiEvent {entry} />
+            ))}
+          </div>
+        )}
+      </div>
+      )}
+  </div>
+</Base>

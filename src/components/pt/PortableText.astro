@@ -1,0 +1,34 @@
+---
+import type { PortableTextProps } from "astro-portabletext/types";
+import { PortableText } from "astro-portabletext";
+// Custom components
+import Table from "@components/pt/Table.astro";
+import Image from "@components/pt/Image.astro";
+import HTML from "@components/pt/HTML.astro"
+import IubendaContent from "@components/pt/IubendaContent.astro"
+import MailchimpForm from "@components/pt/MailchimpForm.astro"
+import Video from "@components/pt/Video.astro";
+// Lib
+import { mergeComponents } from "astro-portabletext/utils";
+
+export interface Props {
+  value: PortableTextProps["value"];
+  components?: PortableTextProps["components"];
+}
+
+const { value, components: overrideComponents = {} } = Astro.props;
+
+const components = mergeComponents({
+  type: {
+    table: Table,
+    image: Image,
+    blockIubenda: IubendaContent,
+    blockVideo: Video,
+    blockHTML: HTML,
+    blockMailchimp: MailchimpForm
+  },
+  //block: MyBlock,
+}, overrideComponents)
+---
+
+<PortableText value={value} components={components} />

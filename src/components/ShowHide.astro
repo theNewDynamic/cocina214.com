@@ -1,0 +1,19 @@
+---
+const { copy = "Show", classes = "inline-block rounded dim no-underline px-4 py-2 bg-black text-xs mt-8 text-white" } = Astro.props
+let { id = "missing" } = Astro.props
+id = `sh-${id}`
+const css = `input#${id} + .show-toggle {
+    display: none;
+  }
+  input#${id}:checked + .show-toggle {
+    display: block;
+  }`
+---
+<style is:inline set:text={css}></style>
+<label for={id} class={classes}>
+  {copy}
+</label>
+<input type="checkbox" name={id} class="hidden" value={copy} {id} />
+<div class="show-toggle">
+  <slot />
+</div>

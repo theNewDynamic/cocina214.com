@@ -1,0 +1,65 @@
+---
+import Header from "@components/Header.astro";
+// import Footer from '@components/Footer.astro'
+import { SEO } from "astro-seo";
+import Analytics from "@components/Analytics.astro";
+import Footer from "@components/Footer.astro";
+import { getSEOData } from "@util/seo.js";
+import "/src/styles/main.css";
+import "/src/styles/fonts.css";
+const { entry, section = "default" } = Astro.props;
+let mainClasses = "pb-32 max-w-7xl mx-auto"
+let SEOData = getSEOData({
+	...entry,
+});
+---
+
+<!DOCTYPE html>
+<html lang={"en"} class="no-js scroll-smooth">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="HandheldFriendly" content="True" />
+		<meta name="MobileOptimized" content="320" />
+		<meta name="viewport" content="width=device-width,minimum-scale=1" />
+		<meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width" />
+		<link rel="dns-prefetch" href="https://cdn.sanity.io" />
+		<link rel="dns-prefetch" href="https://www.google-analytics.com" />
+		<link rel="preconnect" href="https://cdn.sanity.io" crossorigin />
+		<link rel="preconnect" href="https://cloud.typography.com" crossorigin />
+
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+		<meta name="msapplication-TileColor" content="#2d89ef" />
+		<meta name="theme-color" content="#ffffff" />
+		<SEO {...SEOData} />
+		<Analytics />
+		<script>
+			import Alpine from "alpinejs";
+
+			window.Alpine = Alpine;
+
+			Alpine.start();
+		</script>
+		<slot name="to-head" />
+	</head>
+	<body
+		class="bg-slate-50 font-sans"
+	>
+		<slot name="header">
+			<Header />
+		</slot>
+		<main id="main" role="main" class:list={[
+			"bg-slate-50 content",
+			mainClasses
+		]}>
+			<slot />
+		</main>
+		<slot name="footer">
+			<Footer />
+		</slot>
+	</body>
+</html>

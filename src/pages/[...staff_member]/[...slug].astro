@@ -1,0 +1,24 @@
+---
+import { getStaffMembers } from "@data/sanity/api"
+import Layout from '@layouts/Single.astro'
+
+export async function getStaticPaths() {
+  const entries = await getStaffMembers()
+
+  return entries.map(entry => {
+    const slug = entry.slug
+    return {
+      params: {
+        staff_member: 'staff',
+        slug,
+      },
+      props: {
+        entry
+      }
+    }
+  })
+}
+
+const { entry } = Astro.props
+---
+<Layout {entry} />

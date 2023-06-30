@@ -1,0 +1,11 @@
+---
+import PortableText from "@components/pt/PortableText.astro";
+
+const { text } = Astro.props
+---
+{typeof text == "string" && (
+  text
+)}
+{typeof text != "string" && (
+  <PortableText value={text} />
+)}

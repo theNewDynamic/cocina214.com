@@ -1,0 +1,15 @@
+---
+import { getImageURL } from '@util/sanity/image';
+const { lazyload = true, classes = false, alt, params = { width: 400 } } = Astro.props
+let { image } = Astro.props
+const loadingStrategy = lazyload ? "lazy" : "eager"
+const fetchPriority = lazyload ? "auto" : "high"
+let { width } = params
+let height = false
+if(image && typeof image != "string") {
+  image = getImageURL(image, params)
+  height = height || Math.round(width / image.aspectRatio)
+}
+---
+
+<img width={width} fetchpriority={fetchPriority} loading={loadingStrategy} {height} {alt} class={classes} src={image} />

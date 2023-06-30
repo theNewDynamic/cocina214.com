@@ -1,0 +1,31 @@
+---
+import { mailchimp } from '@data/site'
+const { user_id } = mailchimp
+const { audience_id = mailchimp.audience_id, theme = "default", heading = false } = Astro.props
+
+const input_name = `b_${user_id}_73b075de74`
+const action = `https://ndbooks.us8.list-manage.com/subscribe/post?u=${user_id}&id=${audience_id}`
+---
+<form {action} method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate f6 flex flex-column flex-row-l items-center" target="_blank" novalidate>
+{/* mb4 mb2-m mb0-l mr4 mt4 mt0-ns pl5 pr2 */}
+{heading && (
+  <div class="color-inherit dib f4 fw8 pb4 pb0-l pr4-l gray tc">
+    <span class="f2 font-family-brand">{heading} </span>
+  </div>  
+)}
+<label for="mce-EMAIL" class="screen-reader-text clip hide-until-focused">Email Address </label>
+
+<div class="flex">
+<input type="email" value="" name="EMAIL" class="f4 required email border mw-100 w5 input mid-gray ph3 pv2 " id="mce-EMAIL" placeholder="Enter Your Email">
+
+<button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="b bn b--yellow bg-accent-color bg-[#008996] hover-shadow grow ph3 pointer tc white" onClick="ga('send', 'event', { eventCategory: 'newsletter', eventAction: 'subscribe'});">Subscribe</button>
+
+</div>
+
+<div id="mce-responses" class="clear">
+  <div class="response" id="mce-error-response" style="display:none"></div>
+  <div class="response" id="mce-success-response" style="display:none"></div>
+</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+
+  <div style="position: absolute; left: -5000px;"><input type="text" name={input_name} tabindex="-1" value=""></div>
+</form>

@@ -1,0 +1,17 @@
+---
+const { level = 2, theme = "medium" } = Astro.props
+const CustomTag = level ? `h${level}` : 'div'
+const themeClasses = {
+  small: "my-4 text-lg",
+  medium: "mt-8 text-2xl",
+  large: "leading-tight text-3xl"
+}
+const classes = typeof themeClasses[theme] !== "undefined" ? themeClasses[theme] : themeClasses.default
+---
+
+<CustomTag class:list={[
+  "font-bold",
+  classes
+]}>
+  <slot />
+</CustomTag>

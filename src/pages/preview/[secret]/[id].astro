@@ -1,0 +1,56 @@
+---
+import Single from '@layouts/Single.astro'
+import LayoutEvent from '@layouts/event/Single.astro'
+import LayoutPost from '@layouts/Single.astro'
+import LayoutAbout from '@layouts/page/About.astro'
+import LayoutPerson from '@layouts/person/Single.astro'
+import Home from '@layouts/Home.astro'
+import { getEntry } from '@data/sanity/api'
+
+export const prerender = false
+
+const { id, secret } = Astro.params
+const previewHash = "77ce18c3317165749f0dc37b42cb251f"
+
+if(secret != previewHash || !id){
+  return Astro.redirect('/');
+}
+let entry = await getEntry(id)
+
+if(!entry) {
+  entry = {
+    title: "Not found",
+    type: "404",
+    message: `We could not find a preview for the page you're looking for <code>${id}</code> Have you added a slug yet?`
+  }
+}
+
+let { type, title, associations } = entry
+// We use Single for events, pages, posts, media.
+let Layout = Single
+// Other content types' layouts are determined below.
+switch (type) {
+  case "event":
+    Layout = LayoutEvent
+    break;
+  case "person":
+    Layout = LayoutPerson
+    break;
+  case "home":
+    Layout = Home
+    break;
+  case "pageAbout":
+    Layout = About
+    break;
+  default:
+    break;
+}
+---
+
+{type != "404" && (
+  <Layout entry={entry} preview={true} />
+  )}
+{type == "404" && (
+  <div class="max-w-3xl mx-auto py-32 text-center text-xl" set:html={entry.message}>
+  </div>
+)}

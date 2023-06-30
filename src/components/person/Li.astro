@@ -1,0 +1,12 @@
+---
+import Image from '@components/Image.astro'
+import Title from '@components/Title.astro'
+const { entry, entry: { title, image, url } } = Astro.props
+---
+
+<a href={url} class="flex items-center">
+  {image && (
+    <Image {image} params={{width: 100}} classes="img m-0 mr-2" />
+  )}
+  <Title>{title}</Title>
+</a>

@@ -1,0 +1,31 @@
+---
+const { entry, entry: { title, date, body, persons } } = Astro.props
+import Base from '@layouts/Base.astro'
+import Time from '@components/Time.astro'
+import Marked from '@components/Marked.astro'
+import Prose from '@components/Prose.astro'
+import ByLines from '@components/ByLines.astro'
+---
+<Base {entry} >
+  <article class="mx-auto max-w-7xl px-4 lg:px-0">
+    <div class="sm:flex pt-16">
+      <div class="mb-8 px-4 w-full sm:w-1/4">        
+        <div class="border-grey-400 border-b mb-4">
+          {date && (
+            <Time time={date} />
+          )}
+          <h1 class="font-bold mx-auto inline-block text-2xl lg:text-4xl max-w-lg mb-4 mt-2 leading-tight">
+            <Marked text={title} />
+          </h1>
+          <ByLines {entry}>
+        </div>
+      </div>
+      
+      {body && (
+      <section class="prose lg:prose-xl font-serif mx-auto px-4 lg:px-0">
+        <Prose text={body} />
+      </section>
+      )}
+
+    </div>
+</Base>
