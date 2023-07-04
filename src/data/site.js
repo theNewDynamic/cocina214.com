@@ -41,18 +41,18 @@ export const sanity = {
 export const socials = [
   {
     name: 'facebook',
-    url: 'https://facebook.com/xxx',
+    url: 'https://www.facebook.com/Cocina214/',
     icon: 'tnd-facebook-circle'
 
   },
   {
     name: 'instagram',
-    url: 'https://instagram.com/xxx',
+    url: 'https://www.instagram.com/Cocina214/',
     icon: 'tnd-instagram-circle'
   },
   {
     name: 'twitter',
-    url: `https://twitter.com/xxx`,
+    url: `https://twitter.com/Cocina214`,
     icon: 'tnd-twitter-circle'
   },
 ]

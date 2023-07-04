@@ -6,6 +6,7 @@ import EVENT from './projections/EVENT';
 import PAGE from './projections/PAGE';
 import SINGLETON from './projections/SINGLETON';
 import PERSON from './projections/PERSON';
+import LOCATION from './projections/LOCATION';
 
 export async function getEntry(id){
   const query = groq`*[_id == $id][0]{
@@ -43,6 +44,15 @@ export async function getPages() {
     && _type == "page"
   ] | order(publishedAt desc)[]${PAGE}`;
   const entries = await sanityFetch({query});
+  return entries
+}
+
+export async function getLocations() {
+  const query = groq`*[
+    !(_id in path('drafts.**'))
+    && _type == "location"
+  ]${LOCATION}`;
+  const entries = await sanityFetch({query, hash: 'getLocations'});
   return entries
 }
 
