@@ -1,34 +1,65 @@
 ---
 import site from '@data/site'
 import { main } from '@data/menus'
+import { Icon } from 'astro-icon';
 import Follow from '@components/socials/Follow.astro'
+import '/src/styles/hamburger.css'
 ---
-<header>
-  <div class="px-2 py-3 bg-white lg:py-5 lg:px-6 md:p-4">
-    <nav class="flex items-center justify-between mx-auto max-w-[83rem] font-brand" role="navigation">
-  
-      {/* left */}
-      <div class="flex items-center w-1/3">
-        {site.title}
-      </div>
-  
+<style>
+  [astro-icon="menu"]{
+    width: 2rem;
+    height: 2rem;
+    color: currentColor;
+    fill: currentColor;
+  }
+</style>
+<style is:global>
+  input[type=checkbox]#expandable-nav-side-input {
+    display: none;
+  }
+  @media (max-width: 767px) {
+    #expandable-nav-side {
+      transition: transform 500ms ease-out;
+      transform: translateX(100%);
+    }
+
+    #expandable-nav-side-input:checked + #expandable-nav-side {
+      transform: translateX(0)
+    }
+  }
+
+
+</style>
+<header class="bg-white">
+
+  <h1 class="sr-only">{site.title}</h1>
+  <div class="max-w-5xl px-4 mx-auto py-4 md:py-12 relative">
+    <div class="flex justify-between items-center md:mb-12">
+      <div class="hidden md:block">&nbsp;</div>
       {/* center */}
-      <div class="flex items-center justify-center w-1/3 text-black">
-        <ul class="hidden lg:inline-block">
-          {main.map(({url, copy}) => (
-            <li class="block text-base md:inline-block sm:text-base">
-              <a class="color-inherit lowercase transition-colors duration-500 ease-in-out hover:text-gray-400 no-underline px-4" href={url} title={copy}>
-                {copy}
-              </a>
-            </li>
-          ))}
-        </ul>
+      <div class="md:flex justify-center">
+        <img src="/images/logo.jpg" alt="" class="h-auto w-[12rem] md:w-[364px]">
       </div>
-  
-      {/* right */}
-      <div class="flex items-center justify-end w-1/3 text-gray-500">
-        <Follow />
+      <div class="">
+        <label aria-expanded="false" for="expandable-nav-side-input"  class="bg-transparent block w-[2rem] z-10 cursor-pointer  hamburger hamburger--squeeze">
+          <span class="block relative w-full hamburger-box">
+            <span class="block hamburger-inner"></span>
+          </span>
+        </label>
       </div>
-    </nav>
+    </div>
+    <input type="checkbox" id="expandable-nav-side-input" name="" value="" />
+    <div id="expandable-nav-side" class="flex items-center fixed md:block md:static bg-white top-[56px] z-50 bottom-0 left-0 right-0">
+      <ul class="w-full md:flex flex-wrap items-center justify-between px-4">
+        {main.map(({url, copy}) => (
+          <li class="">
+            <a class="w-full block text-center border-b md:border-0 md:text-left md:w-auto text-teal-600 md:uppercase px-4 py-4 md:font-bold" href={url} title={copy}>
+              {copy}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
   </div>
 </header>

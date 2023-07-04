@@ -14,17 +14,7 @@ export default defineType({
       name: 'name',
       title: 'Full Name',
       options: { columns: 2 },
-    }, 
-    {
-      name: "author",
-      title: "Author Information",
-      hidden: ({ document }) => !document?.associations?.includes("author")
     },
-    {
-      name: "staff",
-      title: "Staff Information",
-      hidden: ({ document }) => !document?.associations?.includes("staff")
-    }
   ],
   fields: [
     {
@@ -45,17 +35,19 @@ export default defineType({
       type: 'string',
       fieldset: 'name',
     },
-    associations([
-      { value: "author", title: "Author" },
-      { value: "staff", title: "Staff" },
-    ]),
-
+    {
+      name: "associations",
+      type: "array",
+      hidden: true,
+      of: [
+        { type: "string" }
+      ],
+    },
     image,
     {
-      name: "position",
-      title: "Position",
+      name: "job_title",
+      title: "Title",
       type: "string",
-      fieldset: "staff"
     },
     description,
     {
@@ -63,12 +55,10 @@ export default defineType({
       title: "Body",
       type: "blockContent"
     },
-    {
-      name: 'twitter',
-      title: "Twitter Handle",
-      type: "string",
-    }
   ],
+  initialValue: {
+    associations: ['staff']
+  },
   preview: {
     select: {
       title: 'title',

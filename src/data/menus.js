@@ -1,16 +1,32 @@
 
 export const main = [
   {
-    url: "/event",
-    copy: "Events",
+    url: "/",
+    copy: "Home",
+  },
+  {
+    url: "/about",
+    copy: "About",
+  },
+  {
+    url: "/loyalty/",
+    copy: "Loyalty"
+  },
+  {
+    url: "/dine/",
+    copy: "Dine"
   },
   {
     url: "/news",
-    copy: "News",
+    copy: "News"
   },
   {
-    url: "/staff/",
-    copy: "Our People"
+    url: "/shop",
+    copy: "Order Online"
+  },
+  {
+    url: "/contact",
+    copy: "Contact"
   },
 ]
 

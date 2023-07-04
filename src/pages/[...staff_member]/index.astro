@@ -4,7 +4,6 @@ import { url_mapping } from "@data/site"
 import Layout from '@layouts/person/List.astro'
 
 export async function getStaticPaths() {
-  console.log(url_mapping.staff || 'staff')
   return [{
     params: {
       staff_member: url_mapping.staff || 'staff',

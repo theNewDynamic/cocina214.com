@@ -2,7 +2,7 @@
 
 //Those could be populated remotely, const site_settings = await getSiteSettings()
 const { title, description, image } = {
-  title: `{siteTitle}`,
+  title: `Cocina 214`,
   description: "A site description",
   image: null,
 }
@@ -12,10 +12,10 @@ export default {
   description,
   image,
   ga_id: 'UA-xxxx-2',
-  url: import.meta.env.SITE ? import.meta.env.SITE : '{siteURL}',
+  url: import.meta.env.SITE ? import.meta.env.SITE : 'https://www.cocina214.com',
   env: import.meta.env.ASTRO_ENV ? import.meta.env.ASTRO_ENV : "dev",
   // JSON LD
-  site_id: `{siteID}`,
+  site_id: `cocina214`,
   seo: {
     default_image: "/uploads/social-400x400.png",
     site_name: title,
@@ -31,7 +31,7 @@ export const mailchimp = {
 
 // The Sanity information
 export const sanity = {
-    projectId: '{sanityProjectID}',
+    projectId: 'd8r8fz1h',
     dataset: 'production',
     apiVersion: '2022-12-14',
     useCdn: false,

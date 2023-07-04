@@ -10,22 +10,17 @@ export default defineType({
     slug,
     seo,
     description,
-    reference('taxonomySection', {
-      title: 'Section',
-    }),
     hero,
     body,
     gallery,
   ],
   preview: {
     select: {
-      section: 'taxonomySection.title',
       title: 'title',
     },
-    prepare({ title, section }) {
+    prepare({ title }) {
       return {
-        title,
-        subtitle: section,
+        title
       }
     },
   },

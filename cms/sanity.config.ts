@@ -35,7 +35,7 @@ if (process.env.NODE_ENV == "development") {
 
 const productionUrl = async (prev, context) => {
   const previewHash = "77ce18c3317165749f0dc37b42cb251f"
-  let domain = process.env.NODE_ENV == "development" ? "http://localhost:3000" : "{siteURL}"
+  let domain = process.env.NODE_ENV == "development" ? "http://localhost:3000" : "https://www.cocina214.com"
   // context includes the client an other details
   const { document } = context
   const included = [

@@ -1,13 +1,13 @@
 import { defineType } from "sanity";
 
 export default defineType({
-  title: "Venue",
-  name: 'venue',
+  title: "Location",
+  name: 'location',
   type: 'document',
   fields: [
     {
       name: "title",
-      title: "Name of Venue",
+      title: "Name of Location",
       type: "string"
     },
     {

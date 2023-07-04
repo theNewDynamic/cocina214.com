@@ -4,9 +4,9 @@
 import { ListItemBuilder, StructureResolver } from 'sanity/desk'
 
 
-import events from './eventsStructure'
 import home from './homeStructure'
 import posts from './postsStructure'
+import persons from './personsStructure'
 import settings from './settingsStructure'
 
 
@@ -32,8 +32,8 @@ export const structure: StructureResolver = (S, context) =>
       home(S, context),
       S.divider(),
       posts(S, context),
-      events(S, context),
       S.divider(),
+      persons(S, context),
       settings(S, context),
       // Unhide the documentTypeListItems to configure desk
       //...S.documentTypeListItems().filter(hiddenDocTypes),

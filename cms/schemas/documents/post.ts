@@ -1,5 +1,5 @@
 import { defineType } from 'sanity'
-import { title, seo, slug, date, description, image, gallery } from '../fields'
+import { title, seo, slug, date, description, image, gallery, references } from '../fields'
 import { defaultOrdering as orderings } from '../orderings'
 import { IoDocumentTextOutline as icon } from 'react-icons/io5'
 
@@ -16,6 +16,12 @@ export default defineType({
     image,
     date,
     description,
+    references('taxonomyCategory', {name: 'taxonomyCategories'}),
+    {
+      name: 'additional_info',
+      title: 'Additional info',
+      type: 'text'
+    },
     {
       name: 'body',
       title: 'Body',

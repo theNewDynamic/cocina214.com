@@ -7,16 +7,16 @@ This template repo should be used upon starting a new Huge Project. It uses Huge
 
 Search and replace the following {strings} in the project with:
 
-`{siteID}` > Site ID, a string or int with alphanumeric chars (ex: mywebsite)
-`{siteTitle}` > Site Title (ex: My Website)
-`{siteURL}` > Site URL (ex: https://www.mywebsite.com)
-`{sanityProjectID}` > Sanity project ID (ex: sxxx2w)
+`cocina214` > Site ID, a string or int with alphanumeric chars (ex: mywebsite)
+`Cocina 214` > Site Title (ex: My Website)
+`https://www.cocina214.com` > Site URL (ex: https://www.mywebsite.com)
+`d8r8fz1h` > Sanity project ID (ex: sxxx2w)
 ## Env
 
 Add following filled values as `/cms/.env`
 
 ```env
-SANITY_STUDIO_PROJECT_ID="{sanityProjectID}"
+SANITY_STUDIO_PROJECT_ID="d8r8fz1h"
 SANITY_STUDIO_DATASET="production"
 SANITY_STUDIO_PROJECT_TITLE="{sanityProjectTitle}"
 SANITY_STUDIO_API_VERSION="2022-11-15"

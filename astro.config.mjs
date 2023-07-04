@@ -3,7 +3,7 @@ import tailwind from '@astrojs/tailwind';
 import netlify from "@astrojs/netlify/functions";
 // https://astro.build/config
 export default defineConfig({
-  site: '{siteURL}',
+  site: 'https://www.cocina214.com',
   output: "hybrid",
   compressHTML: true,
   experimental: {
