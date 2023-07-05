@@ -8,38 +8,62 @@ import SiteBy from '@components/SiteBy.astro'
 const currentPath = Astro.url.pathname;
 const locations = await getLocations()
 ---
+<style>
+  .css-footer-logo {
+  height: 16px;
+  width: 4.95rem;
+}
+@media screen and (min-width: 30em) {
+  .css-footer-logo {
+    height: 1.25rem;
+    width: 6.1875rem;
+  }
+}
+@media screen and (min-width: 56em) {
+  .css-footer-logo {
+    height: 63px;
+    width: 91px;
+  }
+}
+</style>
 <footer class="w-full p-4 bg-pink-500 text-white" role="contentinfo">
-  <div class="max-w-5xl px-4 mx-auto">
-    <div>
-      {locations.map(entry => (
-        <div class="uppercase">
-          <h3 class="border-b uppercase">
-            {entry.title}
-          </h3>
-          <p class="mb-4">
-            {entry.address_1}<br>
-            {entry.city}, {entry.state}&nbsp;{entry.zip}
-          </p>
-          <p class="mb-4">
-            {entry.email}<br>
-            {entry.phone}
-          </p>
-        </div>
-      ))}
-    </div>
-    <div class="text-white">
-      <Follow />
-    </div>
-    <div class="md:flex justify-between lg:pt-16">
+  <div class="max-w-5xl px-4 mx-auto md:flex justify-between">
+    {/* Address & Follow */}
+    <div class="md:flex justify-end md:block md:order-1">
       <div>
-        <a class="px-4 text-xs py-2 block md:inline-block text-gray-600 no-underline hover:text-black" href="{{ .Site.BaseURL }}" >
-          &copy;{getCurrentYear()}&nbsp;{site.title}
-        </a>         
+        {locations.map(entry => (
+          <div class="uppercase">
+            <h3 class="border-b uppercase">
+              {entry.title}
+            </h3>
+            <p class="mb-4">
+              {entry.address_1}<br>
+              {entry.city}, {entry.state}&nbsp;{entry.zip}
+            </p>
+            <p class="mb-4">
+              {entry.email}<br>
+              {entry.phone}
+            </p>
+          </div>
+        ))}
+        <div class="text-white -ml-2">
+          <Follow />
+        </div>
       </div>
-  
-      <div class="px-4 py-2 text-xs text-gray-600 no-underline hover:text-black">
-        <SiteBy />
+    </div>
+
+    {/* Logo and Corp. */}
+    <div class="flex justify-between md:flex-col md:order-0 my-12 md:my-0">
+      <div>
+        <img class="hidden md:block w-[6rem]" src="/images/footer_logo.svg" alt="" />
+        <img class="md:hidden css-footer-logo" src="/images/logo_small.svg" alt="" />
+      </div>
+      <div class="text-white uppercase md:mt-6">
+        &copy;{getCurrentYear()}&nbsp;{site.title}
       </div>
     </div>
   </div>
 </footer>
+<div class="max-w-5xl px-4 mx-auto">
+  <SiteBy />
+</div>
