@@ -8,7 +8,7 @@ import { getSEOData } from "@util/seo.js";
 import "/src/styles/main.css";
 import "/src/styles/fonts.css";
 const { entry, section = "default" } = Astro.props;
-let mainClasses = "pb-32 max-w-7xl mx-auto"
+let mainClasses = "pb-32 max-w-5xl px-4 mx-auto"
 let SEOData = getSEOData({
 	...entry,
 });
@@ -27,7 +27,6 @@ let SEOData = getSEOData({
 		<link rel="dns-prefetch" href="https://www.google-analytics.com" />
 		<link rel="preconnect" href="https://cdn.sanity.io" crossorigin />
 		<link rel="preconnect" href="https://cloud.typography.com" crossorigin />
-
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -35,6 +34,9 @@ let SEOData = getSEOData({
 		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
 		<meta name="msapplication-TileColor" content="#2d89ef" />
 		<meta name="theme-color" content="#ffffff" />
+		<style is:global>
+			@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+		</style>
 		<SEO {...SEOData} />
 		<Analytics />
 		<script>
@@ -47,13 +49,13 @@ let SEOData = getSEOData({
 		<slot name="to-head" />
 	</head>
 	<body
-		class="bg-slate-50 font-sans"
+		class="font-sans"
 	>
 		<slot name="header">
 			<Header />
 		</slot>
 		<main id="main" role="main" class:list={[
-			"bg-slate-50 content",
+			"content",
 			mainClasses
 		]}>
 			<slot />

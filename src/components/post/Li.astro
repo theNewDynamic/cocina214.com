@@ -1,31 +1,40 @@
 ---
 import Image from '@components/Image.astro'
 import Title from '@components/Title.astro';
+import Time from "@components/Time.astro";
+import Prose from "@components/Prose.astro"
 import { formatDate, getExcerpt } from '@util/helpers'
-const { entry, entry: {title, url, image, bodyText }} = Astro.props
+const { entry, list = true, entry: {title, url, date, image, bodyText, body, taxonomyCategories }} = Astro.props
 const description = bodyText ? getExcerpt(bodyText) : false
+const prose = list ? description : body
 ---
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
-    <div class="flex flex-column flex-row-ns">
-      {image && (
-        <div class="w-1/5">
-          <Image image={image} classes="db img w-100 w5-ns" alt={`image from ${title}`} />
+<article class="mb-24">
+  <div class="border-b-2 border-fuchsia-600 uppercase mb-8 pb-2 flex items-center justify-between">
+    <Title>
+      {list ? (
+        <a href={url}>
+          {title}
+        </a>
+      ) : title}
+    </Title>
+
+    <Time time={date} classes="shrink-0" />
+  </div>
+  <div class="grid gap-8 md:grid-cols-2">
+    <div>
+      {prose && (
+        <div class="prose font-serif mb-8">
+          <Prose text={prose} />
         </div>
       )}
-      <div>
-        <Title theme="large">
-          <a href={url}>
-            {title}
-          </a>
-        </Title>
-        <p class="lh-copy nested-copy-line-height text-color-primary">
-          {description}
-        </p>
-        <a href={url} class="accent-color dim link">
-          more &raquo;
-        </a>
-      </div>
+      {list && (
+        <a href={url} class="text-2xl uppercase font-brand font-bold">Read More</a>
+      )}
     </div>
+    {image && (
+      <div class="flex justify-end">
+        <Image image={image} classes="" alt={`image from ${title}`} />
+      </div>
+    )}
   </div>
 </article>

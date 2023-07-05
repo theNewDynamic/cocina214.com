@@ -7,6 +7,7 @@ import PAGE from './projections/PAGE';
 import SINGLETON from './projections/SINGLETON';
 import PERSON from './projections/PERSON';
 import LOCATION from './projections/LOCATION';
+import TAXONOMY_TERM from './projections/TAXONOMY_TERM';
 
 export async function getEntry(id){
   const query = groq`*[_id == $id][0]{
@@ -34,7 +35,16 @@ export async function getPosts() {
     !(_id in path('drafts.**'))
     && _type == "post"
   ] | order(publishedAt desc)[]${POST}`;
-  const entries = await sanityFetch({query});
+  const entries = await sanityFetch({query, hash: 'getPosts', forceCache: true});
+  return entries
+}
+
+export async function getTaxonomyCategories() {
+  const query = groq`*[
+    !(_id in path('drafts.**'))
+    && _type == "taxonomyCategory"
+  ] | order(publishedAt desc)[]${TAXONOMY_TERM}`;
+  const entries = await sanityFetch({query, hash: 'getTaxonomyCategories', forceCache: true});
   return entries
 }
 
@@ -52,7 +62,7 @@ export async function getLocations() {
     !(_id in path('drafts.**'))
     && _type == "location"
   ]${LOCATION}`;
-  const entries = await sanityFetch({query, hash: 'getLocations'});
+  const entries = await sanityFetch({query, hash: 'getLocations', forceCache: true});
   return entries
 }
 

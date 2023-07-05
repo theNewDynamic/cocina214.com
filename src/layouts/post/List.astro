@@ -2,17 +2,31 @@
 const { entry, entry: { title, entries, prev, next} } = Astro.props
 import Base from '@layouts/Base.astro'
 import Li from '@components/post/Li.astro'
+import { categories } from "@data/menus"
+const currentUrl = new URL(Astro.request.url).pathname;
 ---
 <Base {entry}>
+  <div class="border-t-2 border-fuchsia-600 w-full">
+    <ul class="flex w-full justify-center items-center font-serif">
+      {categories.map(({copy, url})=> (
+      <li>
+        <a class:list={[
+          "block px-8 py-4",
+          url == currentUrl ? "opacity-50" : ""
+        ]} href={url}>{copy}</a>
+      </li>
+      ))}
+    </ul>
+  </div>
   <div class="w-full pt-8 px-4 md:px-16">
-    <div class="w-full sm:grid gap-8 grid-cols-2">
+    <div>
       {entries.map((entry, index) => (
-        <Li layout={!index ? "large" : "default"} {entry} />
+        <Li {entry} />
       ))}
     </div>
   </div>
-  <div class="w-full px-8 mb-32">
-    {prev ? <a data-prev class="underline" href={prev}>Previous</a> : <div>&nbsp;</div>}
-    {next ? <a data-next class="underline" href={next}>Next</a> : <div>&nbsp;</div>}
+  <div class="w-full flex justify-between pt-2 mb-32 border-t-2 border-purple-600">
+    {prev ? <a data-prev class="font-brand text-2xl font-bold" href={prev}>Previous Page</a> : <div>&nbsp;</div>}
+    {next ? <a data-next class="font-brand text-2xl font-bold" href={next}>Next Page</a> : <div>&nbsp;</div>}
   </div>
 </Base>

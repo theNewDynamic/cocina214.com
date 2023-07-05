@@ -60,18 +60,25 @@ export const secondary = [
     copy: "Space Rental"
   }
 ]
-
-export const legal = [
+export const categories = [
   {
-    copy: "Cookie Policy",
-    url: "/cookie-policy",
+    copy: "All",
+    url: "/news/"
   },
   {
-    copy: "Privacy Policy",
-    url: "/privacy-policy"
+    copy: "Upcoming",
+    url: "/news/upcoming"
   },
   {
-    copy: "Terms of Service",
-    url: "/terms-of-service"
-  }
+    copy: "Current",
+    url: "/news/current"
+  },
+  {
+    copy: "Past Events",
+    url: "/news/past-events"
+  },
+  {
+    copy: "Awards",
+    url: "/news/awards/"
+  },
 ]

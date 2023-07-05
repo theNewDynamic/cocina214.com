@@ -1,7 +1,7 @@
 ---
 import { getPosts } from "@data/sanity/api"
 import { url_mapping } from "@data/site"
-import Layout from '@layouts/Single.astro'
+import Layout from '@layouts/post/Single.astro'
 
 export async function getStaticPaths() {
   const entries = await getPosts()

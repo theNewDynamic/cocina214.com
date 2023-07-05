@@ -1,0 +1,10 @@
+---
+const { entry, entry: { title, entries, prev, next} } = Astro.props
+import Base from '@layouts/Base.astro'
+import Li from '@components/post/Li.astro'
+---
+<Base {entry}>
+  <div class="w-full pt-8 px-4 md:px-16">
+    <Li list={false} {entry} />
+  </div>
+</Base>

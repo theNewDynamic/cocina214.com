@@ -6,7 +6,7 @@ export default groq`{
   _type == "person" && "staff" in associations => {
     'dir': 'staff'
   },
-  _type == "post" => {
+  _type in ["post", "taxonomyCategory"] => {
     'dir': 'news'
   },
 } {

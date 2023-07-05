@@ -3,21 +3,29 @@ import { getPosts } from "@data/sanity/api"
 import { url_mapping } from "@data/site"
 import Layout from '@layouts/post/List.astro'
 
-export async function getStaticPaths() {
-  return [{
+export async function getStaticPaths({ paginate }) {
+  const posts = await getPosts()
+  return paginate(posts, {
     params: {
       post: url_mapping.post || 'post',
     },
+    pageSize: 3,
     props: {
       entry: {
         title: "News",
         section: "News",
-        entries: await getPosts()
       }
     }
-  }]
+  })
 }
 
-const { entry } = Astro.props
+const { page, title } = Astro.props
+const entry = {
+  title,
+  entries: page.data,
+  current: page.currentPage,
+  next: page.url.next,
+  prev: page.url.prev
+}
 ---
 <Layout {entry} />
