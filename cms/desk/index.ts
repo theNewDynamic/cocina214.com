@@ -12,7 +12,7 @@ import notices from './noticesStructure'
 import locations from './locationsStructure'
 import settings from './settingsStructure'
 import about from './aboutStructure'
-
+import shop from './shopStructure'
 
 // If you add document types to desk structure manually, you can add them to this function to prevent duplicates in the root pane
 const hiddenDocTypes = (listItem: ListItemBuilder) => {
@@ -38,6 +38,8 @@ export const structure: StructureResolver = (S, context) =>
       pages(S, context),
       S.divider(),
       posts(S, context),
+      S.divider(),
+      shop(S, context),
       S.divider(),
       about(S, context),
       persons(S, context),

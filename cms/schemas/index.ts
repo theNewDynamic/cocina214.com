@@ -14,12 +14,15 @@ import BlockSection from './blocks/section'
 import person from './documents/person'
 import taxonomyCategory from './documents/taxonomyCategory'
 import notice from './documents/notice'
+import pageShop from './singletons/pageShop'
+import product from './documents/product'
 
 export const schemaTypes = [
   // DOCUMENTS
   page,
   post,
   person,
+  product,
   location,
   notice,
   taxonomyCategory,
@@ -28,7 +31,7 @@ export const schemaTypes = [
   pageAbout,
   siteSettings,
   navigation,
-
+  pageShop,
   // BLOCKS (for Page builders)
   BlockText,
   BlockEntries,
