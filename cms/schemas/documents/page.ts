@@ -1,5 +1,5 @@
 import { defineType } from 'sanity'
-import { title, body, description, seo, slug, reference, gallery, hero } from '../fields'
+import { title, body, description, seo, slug, gallery, blocks, hero } from '../fields'
 
 export default defineType({
   name: 'page',
@@ -11,8 +11,8 @@ export default defineType({
     seo,
     description,
     hero,
+    blocks,
     body,
-    gallery,
   ],
   preview: {
     select: {

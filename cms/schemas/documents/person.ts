@@ -1,7 +1,7 @@
 import { defineType, defineField } from 'sanity'
 import { personOrdering as orderings } from '../orderings'
 import { SlUserFemale as icon } from "react-icons/sl";
-import { image, associations, description, slug, reference } from '../fields';
+import { image, description, slug } from '../fields';
 
 export default defineType({
   name: 'person',
@@ -63,10 +63,10 @@ export default defineType({
     select: {
       title: 'title',
       associations: 'associations',
-      position: 'position',
+      position: 'job_title',
       image: 'image.asset'
     },
-    prepare({ title, image, associations, academic_year, position }) {
+    prepare({ title, image, associations, position }) {
       let subtitle = associations ? associations.join(', ') : 'No association'
       let subtitle_strings = []
       if(associations?.includes('staff') && position) {

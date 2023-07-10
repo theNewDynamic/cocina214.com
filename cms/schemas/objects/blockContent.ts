@@ -4,6 +4,8 @@ import blockIubenda from './blockIubenda'
 import blockMailchimp from './blockMailchimp'
 import blockHTML from './blockHTML'
 import blockVideo from './blockVideo'
+import blockFiles from './blockFiles'
+import blockLinks from './blockLinks'
 const displayOptions = [
   { title: 'Float Left', value: 'float-left' },
   { title: 'Float Right', value: 'float-right' },
@@ -90,9 +92,9 @@ export default defineType({
         }
       ]
     }),
-    defineArrayMember(blockIubenda),
+    defineArrayMember(blockFiles),
+    defineArrayMember(blockLinks),
     defineArrayMember(blockHTML),
     defineArrayMember(blockVideo),
-    defineArrayMember(blockMailchimp)
   ],
 })

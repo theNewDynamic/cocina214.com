@@ -1,6 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import { IoHomeOutline } from 'react-icons/io5'
-import { description, hero, image, seo } from '../fields'
+import { blocks, body, description, hero, image, seo } from '../fields'
 
 
 export default defineType({
@@ -17,8 +17,10 @@ export default defineType({
       initialValue: 'Home',
     }),
     seo,
+    body,
     description,
     image,
-    hero
+    hero,
+    blocks
   ]
 })

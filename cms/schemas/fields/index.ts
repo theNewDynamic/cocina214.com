@@ -16,6 +16,7 @@ import references from './references'
 import reference from './reference'
 import gallery from './gallery'
 import hero from './hero'
+import blocks from './blocks'
 export {
   title,
   slug,
@@ -35,4 +36,5 @@ export {
   reference,
   gallery,
   hero,
+  blocks,
 }

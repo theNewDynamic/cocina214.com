@@ -7,6 +7,7 @@ export default defineField({
   type: "array",
   of: [
     { type: "blocks/text" },
-    { type: "blocks/post" },
+    { type: "blocks/section" },
+    { type: "blocks/entries" },
   ]
 })
