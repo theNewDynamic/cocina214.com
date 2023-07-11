@@ -9,5 +9,7 @@ export default defineField({
     { type: "blocks/text" },
     { type: "blocks/section" },
     { type: "blocks/entries" },
+    { type: "blocks/location" },
+    { type: "blocks/form" },
   ]
 })

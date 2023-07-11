@@ -1,5 +1,5 @@
 import { defineField } from 'sanity'
-import { RxSection as icon } from 'react-icons/rx'
+import { MdOutlinePinDrop as icon } from "react-icons/md"
 import { image } from '../fields'
 
 const themes = [
@@ -26,22 +26,23 @@ const themes = [
 ]
 
 export default defineField({
-  name: "blocks/section",
+  name: "blocks/location",
   type: "object",
-  title: "Section",
+  title: "Location",
   icon,
   fields: [
     {
       name: "title",
       type: "string",
-      description: "Title is optional"
+      description: "Title is optional, will default to the location's name"
     },
     {
-      name: "copy",
-      title: "Copy",
-      type: "blockContent"
+      name: "location",
+      type: "reference",
+      to: [{
+        type: "location"
+      }]
     },
-    image,
     {
       name: 'theme',
       type: 'string',
@@ -54,11 +55,13 @@ export default defineField({
   preview: {
     select: {
       title: 'title',
+      location: 'location.title'
     },
-    prepare({ title }) {
+    prepare({ title, location }) {
+      const subtitle = title ? title : location
       return {
-        title: 'Section',
-        subtitle: title,
+        title: 'Location',
+        subtitle,
         icon
       }
     }

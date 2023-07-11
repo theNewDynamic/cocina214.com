@@ -1,6 +1,6 @@
 import { defineField } from "sanity"
 import { image } from "../fields"
-
+import { IoNewspaperOutline as icon } from 'react-icons/io5'
 const themes = [
   {
     value: 'default',
@@ -28,6 +28,7 @@ export default defineField({
   name: "blocks/entries",
   type: "object",
   title: "Posts",
+  icon,
   fields: [
     {
       name: "title",
@@ -65,6 +66,7 @@ export default defineField({
       return {
         title: 'Announcements',
         subtitle: title,
+        icon,
       }
     }
   }

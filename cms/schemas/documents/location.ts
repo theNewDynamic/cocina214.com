@@ -5,6 +5,19 @@ export default defineType({
   name: 'location',
   type: 'document',
   icon,
+  fieldsets: [
+    {
+      name: 'services',
+      title: 'Tier Services',
+    },
+    {
+      name: 'address',
+      title: 'Address',
+      options: {
+        columns: 2
+      }
+    },
+  ],
   fields: [
     {
       name: "title",
@@ -32,30 +45,6 @@ export default defineType({
       }]
     },
     {
-      name: "address_1",
-      type: "string"
-    },
-    {
-      name: "address_2",
-      type: "string"
-    },
-    {
-      name: "city",
-      type: "string"
-    },
-    {
-      name: "state",
-      type: "string"
-    },
-    {
-      name: "zip",
-      type: "string"
-    },
-    {
-      name: "phone",
-      type: "string"
-    },
-    {
       name: "email",
       title: "Email",
       type: "string"
@@ -64,6 +53,53 @@ export default defineType({
       name: "url",
       title: "URL",
       type: "url"
+    },
+    {
+      name: "address_1",
+      type: "string",
+      fieldset: "address"
+    },
+    {
+      name: "address_2",
+      type: "string",
+      fieldset: "address"
+    },
+    {
+      name: "city",
+      type: "string",
+      fieldset: "address"
+    },
+    {
+      name: "state",
+      type: "string",
+      fieldset: "address"
+    },
+    {
+      name: "zip",
+      type: "string",
+      fieldset: "address"
+    },
+    {
+      name: "phone",
+      type: "string",
+      fieldset: "address"
+    },
+    {
+      name: "coordinates",
+      type: "geopoint",
+      title: "Coordinates"
+    },
+    {
+      name: "google_map_url",
+      title: "Google Map URL",
+      type: "url",
+      fieldset: "services",
+    },
+    {
+      name: "resy_id",
+      title:" Resy Venue ID",
+      type: "string",
+      fieldset: "services",
     }
   ],
   preview: {

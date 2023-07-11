@@ -11,13 +11,14 @@ import blockSimple from './objects/blockSimple'
 import BlockText from './blocks/text'
 import BlockEntries from './blocks/entries'
 import BlockSection from './blocks/section'
+import BlockLocation from './blocks/location'
+import BlockForm from './blocks/form'
 import person from './documents/person'
 import taxonomyCategory from './documents/taxonomyCategory'
 import notice from './documents/notice'
 import pageShop from './singletons/pageShop'
 import product from './documents/product'
 import taxonomyProductCategory from './documents/taxonomyProductCategory'
-
 export const schemaTypes = [
   // DOCUMENTS
   page,
@@ -38,6 +39,8 @@ export const schemaTypes = [
   BlockText,
   BlockEntries,
   BlockSection,
+  BlockLocation,
+  BlockForm,
   // Objects (mostly CMS components/shortcodes)
   blockContent,
   blockSimple,
