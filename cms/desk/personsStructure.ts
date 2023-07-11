@@ -1,6 +1,6 @@
 import { ListItemBuilder } from 'sanity/desk'
 import defineStructure from './defineStructure'
-import { IoNewspaperOutline as icon } from 'react-icons/io5'
+import { SlUserFemale as icon } from "react-icons/sl";
 
 export default defineStructure<ListItemBuilder>((S) =>
   S.listItem()
