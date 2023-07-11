@@ -1,5 +1,5 @@
 import { defineType } from 'sanity'
-import { title, seo, slug, date, description, image, hero } from '../fields'
+import { title, seo, slug, date, description, reference, links, image } from '../fields'
 import { defaultOrdering as orderings } from '../orderings'
 import { IoDocumentTextOutline as icon } from 'react-icons/io5'
 
@@ -22,11 +22,8 @@ export default defineType({
       name: 'images',
       title: 'Images',
     },
-    {
-      name: 'related',
-      title: 'Related Items',
-    },
   ],
+
   fields: [
     title,
     slug,
@@ -35,9 +32,22 @@ export default defineType({
     {
       type: "array",
       name: "images",
+      group: "images",
+      options: {
+        layout: "grid",
+      },
       of: [
-        {type: "image"}
+        image
       ]
+    },
+    reference('taxonomyProductCategory'),
+    {
+      name: 'body',
+      type: 'blockContent',      
+    },
+    {
+      name: 'details',
+      type: 'blockSimple',      
     },
     {
       type: 'object',
@@ -58,19 +68,40 @@ export default defineType({
         },
         {
           type: 'number',
+          name: 'weight'
+        },
+        {
+          type: 'number',
           name: 'shipping_weight'
         },
         {
           type: "array",
-          name: "sizes",
-          of: [{type: "string"}]
+          name: "variants",
+          of: [
+            {
+              type: "object",
+              fields: [
+                {
+                  name: "label",
+                  type: "string"
+                },
+                {
+                  name: "options",
+                  type: "array",
+                  of: [
+                    {type: "string"}
+                  ]
+                },
+              ]
+            }
+          ]
+        },
+        {
+          ...links,
+          title: "Documents URLs"
         }
       ]
     },
-    {
-      name: 'body',
-      type: 'blockContent',      
-    }
   ],
 
   preview: {

@@ -10,6 +10,15 @@ export default defineField({
     collapsed: false,
   },
   fields: [
-    image,
+    {
+      type: "array",
+      name: "images",
+      options: {
+        layout: "grid",
+      },
+      of: [
+        image
+      ]
+    },
   ]
 })

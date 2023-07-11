@@ -1,6 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import { IoMdInformationCircleOutline as icon } from 'react-icons/io'
-import {body, description, image, seo, slug } from '../fields'
+import {body, description, hero, image, seo, slug } from '../fields'
 
 
 export default defineType({
@@ -21,6 +21,7 @@ export default defineType({
     body,
     description,
     image,
+    hero,
     {
       type: "array",
       name: "products",

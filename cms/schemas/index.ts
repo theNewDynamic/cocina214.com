@@ -16,6 +16,7 @@ import taxonomyCategory from './documents/taxonomyCategory'
 import notice from './documents/notice'
 import pageShop from './singletons/pageShop'
 import product from './documents/product'
+import taxonomyProductCategory from './documents/taxonomyProductCategory'
 
 export const schemaTypes = [
   // DOCUMENTS
@@ -26,6 +27,7 @@ export const schemaTypes = [
   location,
   notice,
   taxonomyCategory,
+  taxonomyProductCategory,
   // SINGLETONS
   homepage,
   pageAbout,
