@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "sanity:backup": "cd cms && sanity dataset export production ../cocina214_sanity_dataset.tar.gz"
+    "sanity:backup": "cd cms && sanity dataset export production ../$(date \"+%Y-%m-%d_%H-%M\")_cocina214_sanity_dataset.tar.gz"
+
   },
   "dependencies": {
     "@11ty/eleventy-fetch": "^4.0.0",
