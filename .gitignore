@@ -23,3 +23,4 @@ pnpm-debug.log*
 .DS_Store
 .netlify
 .cache
+*_sanity_dataset.tar.gz
