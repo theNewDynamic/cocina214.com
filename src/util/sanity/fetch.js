@@ -3,7 +3,7 @@ import { createClient } from '@sanity/client'
 import { sanity } from '@data/site';
 
 const { projectId, apiVersion, useCdn, token = false} = sanity
-
+const env = import.meta.env.ASTRO_ENV ? import.meta.env.ASTRO_ENV : "dev"
 const client = createClient({
   projectId,
   dataset: 'production',
@@ -22,7 +22,6 @@ const client = createClient({
  */
 const cachedFetch = async function(params_input) {
   const { query, params = {}, hash = "unique" } = params_input
-  const env = import.meta.env.ASTRO_ENV ? import.meta.env.ASTRO_ENV : "dev",
   let url = `https://${projectId}.api.sanity.io/v${apiVersion}/data/query/production#${hash}`
   const cacheDir = env == "dev" ? ".cache" : "/tmp/.cache/"
   const response = await EleventyFetch(url, {
@@ -63,7 +62,7 @@ const normalFetch = async function(params_input) {
  */
 export default async function(params_input) {
   const { hash = false, forceCache = false } = params_input
-  let useCache = hash && site.env !== "dev"
+  let useCache = hash && env !== "dev"
   if(forceCache){
     useCache = true
   }

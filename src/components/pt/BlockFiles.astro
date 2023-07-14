@@ -1,0 +1,15 @@
+---
+const { files } = Astro.props.node
+---
+
+<div>
+  {!!files.length && (
+    <ul>
+      {files.map(({copy, url})=> (
+        <li class="mb-1">
+          <a class="font-bold uppercase" href={url}>{copy}</a>  
+        </li>
+      ))}
+    </ul>
+  )}
+</div>

@@ -18,7 +18,7 @@ const imageBuilder = imageUrlBuilder(client);
  * @param {object} asset The asset reference {_type: image, _ref: xxxxxxx}
  * @returns An Sanity Asset that can be transformed with `.width(600)` etc...
  */
-export const getSanityAsset = (asset) => {
+export const getSanityImage = (asset) => {
   return imageBuilder.image(asset);
 }
 

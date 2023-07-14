@@ -1,0 +1,14 @@
+---
+const { entry, entry: { title, url, blocks, hero} } = Astro.props
+import Base from '@layouts/Base.astro'
+import Blocks from '@components/Blocks.astro';
+---
+<Base {entry} >
+  {false && (
+  <code>{JSON.stringify(entry)}</code>
+  )}
+
+  <div class="w-full pt-8 px-4 md:px-16">
+    <Blocks {blocks} />
+  </div>
+</Base>

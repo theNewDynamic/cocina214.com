@@ -1,0 +1,21 @@
+---
+import Image from "@components/Image.astro";
+import Prose from "@components/Prose.astro";
+import Title from "@components/Title.astro";
+const { blocks, block: { title, image, theme, copy }} = Astro.props
+---
+<div class:list={[
+  "grid grid-cols-2"
+]}>
+{image && (
+  <div>
+    <Image {image} classes="" alt={`image from ${title}`} />
+  </div>
+)}
+{!!copy && (
+  <div>
+    <Title>{title}</Title>
+    <Prose text={copy} />
+  </div>
+)}
+</div>

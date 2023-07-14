@@ -1,6 +1,6 @@
 import groq from "groq";
-import POST from "./POST";
-import PERSON from "./PERSON";
+import IMAGE from "./IMAGE";
+import PORTABLE_TEXT_BLOCK from "./PORTABLE_TEXT_BLOCK";
 export default groq`{
   _type == 'blocks/text'=> {
     'layout': 'text',
@@ -8,17 +8,11 @@ export default groq`{
     copy,
     links,
   },
-  _type == "blocks/posts" => {
-    'layout': 'posts',
+  _type == 'blocks/section'=> {
+    'layout': 'section',
     title,
-    posts[]->${POST}
-  },
-  _type == 'blocks/personsLists'=> {
-    'layout': 'personsLists',
-    title,
-    lists[]{
-      title,
-      persons[]->${PERSON}
-    }
+    theme,
+    'copy': copy[]${PORTABLE_TEXT_BLOCK},
+    image${IMAGE}
   },
 }`

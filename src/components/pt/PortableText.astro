@@ -8,8 +8,10 @@ import HTML from "@components/pt/HTML.astro"
 import IubendaContent from "@components/pt/IubendaContent.astro"
 import MailchimpForm from "@components/pt/MailchimpForm.astro"
 import Video from "@components/pt/Video.astro";
+import BlockFiles from "./BlockFiles.astro";
 // Lib
 import { mergeComponents } from "astro-portabletext/utils";
+
 
 export interface Props {
   value: PortableTextProps["value"];
@@ -25,7 +27,8 @@ const components = mergeComponents({
     blockIubenda: IubendaContent,
     blockVideo: Video,
     blockHTML: HTML,
-    blockMailchimp: MailchimpForm
+    blockMailchimp: MailchimpForm,
+    blockFiles: BlockFiles
   },
   //block: MyBlock,
 }, overrideComponents)

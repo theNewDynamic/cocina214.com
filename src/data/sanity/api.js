@@ -35,7 +35,7 @@ export async function getPosts() {
     !(_id in path('drafts.**'))
     && _type == "post"
   ] | order(publishedAt desc)[]${POST}`;
-  const entries = await sanityFetch({query, hash: 'getPosts', forceCache: true});
+  const entries = await sanityFetch({query, hash: 'getPosts'});
   return entries
 }
 

@@ -1,10 +1,15 @@
 ---
-import { getSanityAsset } from '@util/sanity/image';
+import { getImageURL } from '@util/sanity/image';
 import Prose from "@components/Prose.astro";
-const { asset = false, altText: alt, display = 'w-full', caption = '' } = Astro.props.node
-let image = false
-if(asset) {
-  image = getSanityAsset(asset).width(800).fit('scale').auto('format').url()
+import ImageComp from "@components/Image.astro"
+let { image } = Astro.props.node
+image = image || false
+
+if(image) {
+  image = getImageURL(image, {
+    width: 800,
+  })
+
 }
 
 const classes = {
@@ -16,21 +21,16 @@ const classes = {
 // @TD: Add Href to PT image because you can't link them in the body
 ---
 {image && (
-  <figure class:list={["mx-auto my-2", classes[display]]}>
+  <figure class:list={[
+    "mx-auto my-2", 
+    image.display ? classes[image.display] : ''
+  ]}>
 
-  {asset.href &&
-    <a href={asset.href}>
-      <img src={image} alt={alt ? alt : "Image by Retro Report"} class="block w-full">
-    </a>
-  }
+  <ImageComp {image} />
 
-  {!asset.href &&  
-    <img loading="lazy" src={image} alt={alt ? alt : "Image by Retro Report"} class="block w-full">   
-  }
-
-  {caption && 
+  {image.caption && 
     <figcaption class="p-4 mb-4 prose prose-sm max-w-none block bg-gray-100 !mt-0">
-      <Prose text={caption} />
+      <Prose text={image.caption} />
     </figcaption>
   }
   </figure>
