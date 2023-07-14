@@ -1,0 +1,15 @@
+---
+const { links } = Astro.props.node
+---
+
+<div>
+  {!!links.length && (
+    <ul class="flex -mx-4 my-4">
+      {links.map(({copy, url})=> (
+        <li>
+          <a class="block bg-slate-200 p-4 uppercase font-bold mx-4" href={url}>{copy}</a>  
+        </li>
+      ))}
+    </ul>
+  )}
+</div>

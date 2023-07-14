@@ -10,6 +10,15 @@ export default groq`{
       
     }
   },
+  _type == 'blockLinks' => {
+    _type,
+    _key,
+    links[]{
+      copy,
+      url,
+      
+    }
+  },
   _type == 'image' => {
     _type,
     _key,
@@ -20,5 +29,5 @@ export default groq`{
       }
     }
   },
-  !(_type in ['blockFiles', 'image']) => {...}
+  !(_type in ['blockFiles', 'image', 'blockLinks']) => {...}
 }`
