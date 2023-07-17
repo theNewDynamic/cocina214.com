@@ -4,10 +4,14 @@ import Base from '@layouts/Base.astro'
 import Prose from '@components/Prose.astro'
 import Li from "@components/person/Li.astro"
 import Title from '@components/Title.astro'
+import Slider from '@components/Slider.astro'
 const featured = persons && persons.length > 1 && persons.slice(0, 2)
 const rest = persons && persons.length > 2 && persons.slice(2)
 ---
 <Base {entry} >
+  {hero && hero.images && (
+    <Slider images={hero.images}/>
+  )}
   <div class="max-w-[83rem] mx-auto px-4 md:px-8">
     {body && (
     <article class="py-4 md:py-8 flex">

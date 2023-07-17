@@ -8,6 +8,9 @@ export default groq`{
   seo,
   ...${URL},
   _type,
+  hero{
+    images[]${IMAGE}
+  },
   'type': _type,
   defined(image) => {
     'image': ${IMAGE}

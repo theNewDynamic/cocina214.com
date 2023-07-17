@@ -2,13 +2,14 @@
 const { entry, entry: { title, url, blocks, hero} } = Astro.props
 import Base from '@layouts/Base.astro'
 import Blocks from '@components/Blocks.astro';
+import Slider from '@components/Slider.astro';
 ---
 <Base {entry} >
-  {false && (
-  <code>{JSON.stringify(entry)}</code>
+  {hero && hero.images && (
+    <Slider images={hero.images}/>
   )}
 
-  <div class="w-full pt-8">
+  <div class="w-full p-4">
     <Blocks {blocks} />
   </div>
 </Base>

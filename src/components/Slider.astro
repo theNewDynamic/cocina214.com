@@ -1,0 +1,96 @@
+---
+import { getImageURL } from "@util/sanity/image";
+const { images = [] } = Astro.props
+const slides = images.map((image, index) => (
+ {
+  alt: image.altText,
+  src: getImageURL(image, { width: 1000 }),
+  position: index + 1
+ }
+))
+---
+{images.length > 1 && (
+images.length < 3 ? (
+    <style>
+      /* less than 3 */
+      .bg-1,.bg-2 {-webkit-animation: fade 10.5s ease infinite;-moz-animation: fade 10.5s ease infinite;-ms-animation: fade 10.5s ease infinite;-o-animation: fade 10.5s ease infinite;animation: fade 10.5s ease infinite}
+      .bg-1 {-webkit-animation-delay: 0.5s;-mos-animation-delay: 0.5s;-ms-animation-delay: 0.5s;-o-animation-delay: 0.5s;animation-delay: 0.5s}
+      .bg-2 {-webkit-animation-delay: 5.5s;-mos-animation-delay: 5.5s;-ms-animation-delay: 5.5s;-o-animation-delay: 5.5s;animation-delay: 5.5s}  
+    </style>
+  ) : images.length < 4 ? (
+  <style>
+    /* less than 4 */
+    .bg-1,.bg-2,.bg-3 {-webkit-animation: fade 15.5s ease infinite;-moz-animation: fade 15.5s ease infinite;-ms-animation: fade 15.5s ease infinite;-o-animation: fade 15.5s ease infinite;animation: fade 15.5s ease infinite}
+    .bg-1 {-webkit-animation-delay: 0.5s;-mos-animation-delay: 0.5s;-ms-animation-delay: 0.5s;-o-animation-delay: 0.5s;animation-delay: 0.5s}
+    .bg-2 {-webkit-animation-delay: 5.5s;-mos-animation-delay: 5.5s;-ms-animation-delay: 5.5s;-o-animation-delay: 5.5s;animation-delay: 5.5s}
+    .bg-3 {-webkit-animation-delay: 10.5s;-mos-animation-delay: 10.5s;-ms-animation-delay: 10.5s;-o-animation-delay: 10.5s;animation-delay: 10.5s}
+  </style>
+  ) : (
+  <style>
+      /* less than 5 */
+      .bg-1,.bg-2,.bg-3,.bg-4 {-webkit-animation: fade 20.5s ease infinite;-moz-animation: fade 20.5s ease infinite;-ms-animation: fade 20.5s ease infinite;-o-animation: fade 20.5s ease infinite;animation: fade 20.5s ease infinite}
+      .bg-1 {-webkit-animation-delay: 0.5s;-mos-animation-delay: 0.5s;-ms-animation-delay: 0.5s;-o-animation-delay: 0.5s;animation-delay: 0.5s}
+      .bg-2 {-webkit-animation-delay: 5.5s;-mos-animation-delay: 5.5s;-ms-animation-delay: 5.5s;-o-animation-delay: 5.5s;animation-delay: 5.5s}
+      .bg-3 {-webkit-animation-delay: 10.5s;-mos-animation-delay: 10.5s;-ms-animation-delay: 10.5s;-o-animation-delay: 10.5s;animation-delay: 10.5s}
+      .bg-4 {-webkit-animation-delay: 15.5s;-mos-animation-delay: 15.5s;-ms-animation-delay: 15.5s;-o-animation-delay: 15.5s;animation-delay: 15.5s}
+  </style>
+  )
+ )}
+  
+  
+<style>
+  @-moz-keyframes fade {
+    0% {opacity: 1}
+    12.5% {opacity: 1}
+    25% {opacity: 1}
+    37.5% {opacity: 0}
+    50% {opacity: 0}
+    62.5% {opacity: 0}
+    75% {opacity: 0}
+    87.5% {opacity: 0}
+    100% {opacity: 1}
+  }
+  @-webkit-keyframes fade {
+    0% {opacity: 1}
+    12.5% {opacity: 1}
+    25% {opacity: 1}
+    37.5% {opacity: 0}
+    50% {opacity: 0}
+    62.5% {opacity: 0}
+    75% {opacity: 0}
+    87.5% {opacity: 0}
+    100% {opacity: 1}
+  }
+  @keyframes fade {
+    0% {opacity: 1}
+    12.5% {opacity: 1}
+    25% {opacity: 1}
+    37.5% {opacity: 0}
+    50% {opacity: 0}
+    62.5% {opacity: 0}
+    75% {opacity: 0}
+    87.5% {opacity: 0}
+    100% {opacity: 1}
+  }
+  .css-slider {-webkit-transition: opacity 300ms ease-in-out;-o-transition: opacity 300ms ease-in-out;transition: opacity 300ms ease-in-out;opacity: 0}
+  .css-slider.load {opacity: 1;-webkit-transition: opacity 300ms;-o-transition: opacity 300ms;transition: opacity 300ms}
+</style>
+
+<script>
+  window.addEventListener('load', function(event) {
+      setTimeout(function() {
+        document.querySelector(".css-slider")?.classList.add("load");
+    }, 500);
+  });
+</script>
+  
+
+<div class="bg-white h-96 mt-3 relative css-slider">
+  {slides.map(({src, position}) => (
+    <div class:list={[
+      "absolute h-full left-0 top-0 w-full bg-cover bg-center",
+      `bg-${position}`
+    ]}
+     style={{backgroundImage: `url(${src})`}}></div>
+  ))}
+</div>

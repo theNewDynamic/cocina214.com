@@ -5,6 +5,9 @@ import BLOCKS from "./BLOCKS";
 export default groq`{
   title,
   seo,
+  hero{
+    images[]${IMAGE}
+  },
   ...${URL},
   image${IMAGE},
   'date': publishedAt,
