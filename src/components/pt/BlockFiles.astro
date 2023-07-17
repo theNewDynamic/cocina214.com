@@ -4,10 +4,10 @@ const { files } = Astro.props.node
 
 <div>
   {!!files.length && (
-    <ul>
+    <ul class="my-4">
       {files.map(({copy, url})=> (
         <li class="mb-1">
-          <a class="font-bold uppercase" href={url}>{copy}</a>  
+          <a class="font-bold uppercase font-sans" href={url}>{copy}</a>  
         </li>
       ))}
     </ul>

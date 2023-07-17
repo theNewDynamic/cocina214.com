@@ -7,8 +7,9 @@ import Footer from "@components/Footer.astro";
 import { getSEOData } from "@util/seo.js";
 import "/src/styles/main.css";
 import "/src/styles/fonts.css";
+import "/src/styles/theme_blocks.css";
 const { entry, section = "default" } = Astro.props;
-let mainClasses = "pb-32 max-w-5xl px-4 mx-auto"
+let mainClasses = "pb-32 max-w-5xl px-4 mx-auto" && "px-4"
 let SEOData = getSEOData({
 	...entry,
 });

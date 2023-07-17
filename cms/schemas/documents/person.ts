@@ -13,6 +13,7 @@ export default defineType({
     {
       name: 'name',
       title: 'Full Name',
+      hidden: true,
       options: { columns: 2 },
     },
   ],

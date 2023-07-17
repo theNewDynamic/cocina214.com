@@ -2,27 +2,32 @@
 const { entry, entry: { title, url, body, persons, hero} } = Astro.props
 import Base from '@layouts/Base.astro'
 import Prose from '@components/Prose.astro'
+import Li from "@components/person/Li.astro"
+import Title from '@components/Title.astro'
+const featured = persons && persons.length > 1 && persons.slice(0, 2)
+const rest = persons && persons.length > 2 && persons.slice(2)
 ---
 <Base {entry} >
   <div class="max-w-[83rem] mx-auto px-4 md:px-8">
     {body && (
-    <article class="p-4 md:p-8 lg:p-8">
-      <div class="measure-wide mx-auto text-xl leading-normal nested_paragraph no-underline text-gray-700">
+    <article class="py-4 md:py-8 flex">
+      <div class="min-w-[50%] mx-auto text-lg prose font-serif no-underline text-gray-700">
         <Prose text={body} />
+      </div>
+      {featured && (
+        <div class="grid grid-cols-2 gap-3 shrink-0 md:ml-16 w-[40%]">
+          {featured.map(entry => (<Li {entry} />))}  
+        </div>
+      )}
+      <div>
       </div>
     </article>
     )}
-    {persons && (
-      <section class="my-8 gap-8 grid sm:grid-cols-2 md:grid-cols-3">
-        {persons.map(({ url, full_name, description })=> (
-        <a href={url} class="bg-white text-gray-800 inline-block hover:text-black-900 no-underline p-8 shadow-hover">
-          <h2 class="font-headings font-bold text-2xl block mb-1 text-black-900">{full_name}</h2>
-          {description && (
-            <div class="inline-block font-brand text-gray-600 leading-normal mt-0">
-              <Prose text={description} />
-            </div>
-          )}
-        </a>
+    {rest && (
+      <Title theme="underline">Staff</Title>
+      <section class="my-8 gap-3 grid sm:grid-cols-2 md:grid-cols-5">
+        {rest.map( entry => (
+          <Li {entry} />
         ))}
       </section>
     )}

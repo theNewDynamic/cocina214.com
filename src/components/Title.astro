@@ -1,17 +1,26 @@
 ---
-const { level = 2, theme = "medium" } = Astro.props
-const CustomTag = level ? `h${level}` : 'div'
-const themeClasses = {
-  small: "my-4 text-lg",
-  medium: "text-2xl",
-  large: "leading-tight text-3xl"
+interface Props {
+  level?: number | false,
+  theme?: string,
+  classes?: string | false
 }
-const classes = typeof themeClasses[theme] !== "undefined" ? themeClasses[theme] : themeClasses.default
+const { level = 2, theme = "medium", classes = false } = Astro.props
+const CustomTag = level ? `h${level}` : 'div'
+let themeClasses: {[key: string]: string} = {
+  small: "text-lg",
+  medium: "text-2xl",
+  large: "leading-tight text-3xl",
+  underline: "text-2xl border-b-2 border-currentTheme"
+}
+let combinedClasses = typeof themeClasses[theme] !== "undefined" ? themeClasses[theme] : themeClasses.default
+if(classes) {
+  combinedClasses = [combinedClasses, classes].join(' ')
+}
 ---
 
 <CustomTag class:list={[
-  "font-bold",
-  classes
+  "font-sans font-bold uppercase",
+  combinedClasses
 ]}>
   <slot />
 </CustomTag>

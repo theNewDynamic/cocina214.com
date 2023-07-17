@@ -2,20 +2,55 @@
 import Image from "@components/Image.astro";
 import Prose from "@components/Prose.astro";
 import Title from "@components/Title.astro";
-const { blocks, block: { title, image, theme, copy }} = Astro.props
+import { getImageURL } from "@util/sanity/image";
+
+const { block, block: { title, image, theme, copy }} = Astro.props
+const bgImage = image && getImageURL(image) 
 ---
+<style lang="scss" is:global>
+  @media (min-width: theme('screens.md')) {
+    .alt-wrapper .half-1{
+      order: 1;
+    }
+    .alt-wrapper .half-2{
+      order: 2
+    }
+    .alt-wrapper:nth-child(even) .half-1{
+      order: 2
+    }
+    .alt-wrapper:nth-child(even) .half-2{
+      order: 1;
+      & > div {
+        margin-right: 0;
+        margin-left: auto;
+      }
+    }
+  }
+  </style>
 <div class:list={[
-  "grid grid-cols-2"
+    theme ? 'theme-' + theme : ''
 ]}>
-{image && (
-  <div>
-    <Image {image} classes="" alt={`image from ${title}`} />
+  <div class:list={[
+    "wrapper",
+    "grid md:grid-cols-2",
+    "bg-currentTheme"
+  ]}>
+  {bgImage && (
+    <div class="bg-cover bg-center half-1" style={{
+      backgroundImage: `url(${bgImage})`,
+    }}>
+      <Image {image} classes="md:hidden w-full" alt={`image from ${title}`} params={{width: 800}} />
+    </div>
+  )}
+  {!!copy && (
+    <div class="py-8 half-2">
+      <div class="max-w-lg">
+        <div class="mb-4"><Title theme="underline" classes="title-currentTheme px-8">{title}</Title></div>
+        <div class="text-currentTheme prose font-serif p-8">
+          <Prose text={copy} />
+        </div>  
+      </div>
+    </div>
+  )}
   </div>
-)}
-{!!copy && (
-  <div>
-    <Title>{title}</Title>
-    <Prose text={copy} />
-  </div>
-)}
 </div>

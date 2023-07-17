@@ -1,0 +1,67 @@
+:root {
+  --primary: theme('colors.primary.500');
+  --title-color: var(--primary);
+  --text-color: var(--primary);
+  --border-color: var(--primary);
+  --bg-color: theme('colors.white');
+  --bg-color-secondary: theme('colors.gray.300')
+}
+.text-currentTheme{
+  color: var(--text-color);
+}
+.title-currentTheme{
+  color: var(--title-color);
+}
+.border-currentTheme{
+  border-color: var(--border-color);
+}
+.bg-currentTheme{
+  background-color: var(--bg-color);
+}
+.bg-currentTheme-secondary{
+  background-color: var(--bg-color-secondary);
+}
+.hover\:bg-currentTheme:hover{
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+.theme-green, .theme-purple{
+  color: white;
+}
+.theme-green{
+  --primary: theme('colors.c-teal.500');
+  --title-color: var(--primary);
+  --text-color: white;
+  --border-color: var(--primary);
+  --bg-color: theme('colors.c-green.500');
+  --bg-color-secondary: theme('colors.c-green.400');
+  --bg-color-opacity: rgba(var(--bg-color), 0.5);
+}
+  .theme-green .bg-opacity-currentTheme{
+    @apply bg-green-500 bg-opacity-50;
+  }
+
+.theme-purple{
+  --primary: theme('colors.c-purple.500');
+  --title-color: theme('colors.c-purple.400');
+  --text-color: white;
+  --border-color: theme('colors.c-purple.400');
+  --bg-color: var(--primary);
+  --bg-color-secondary: theme('colors.c-purple.600');
+  --bg-color-opacity: rgba(var(--bg-color), 0.5);
+}
+  .theme-purple .bg-opacity-currentTheme{
+    @apply bg-purple-500 bg-opacity-50;
+  }
+
+.theme-teal{
+    --primary: theme('colors.c-teal.500');
+    --text-color: white;
+    --border-color: theme('colors.c-green.500');
+    --bg-color: var(--primary);
+    --bg-color-secondary: theme('colors.c-purple.400');
+    --bg-color-opacity: rgba(var(--bg-color), 0.5);
+}
+  .theme-purple .bg-opacity-currentTheme{
+    @apply bg-purple-500 bg-opacity-50;
+  }

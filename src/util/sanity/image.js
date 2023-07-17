@@ -25,10 +25,10 @@ export const getSanityImage = (asset) => {
 /**
  * Returns a Sanity Image URL with optional transformation query
  * @param {string|Object} image Either a string or an object containing a `src` 
- * @param {Object} params The transformation to be applied to the image.
+ * @param {Object=} params  The transformation to be applied to the image.
  * @returns 
  */
-export const getImageURL = (image, params) => {
+export const getImageURL = (image, params = {}) => {
   // https://cdn.sanity.io/images/epfbj25g/production/8e4320753b4b01984d73973ef8b8c813a684f1a6-4000x2250.jpg?w=300&fit=scale&auto=format
   let output = ''
   if(typeof image == "string") {

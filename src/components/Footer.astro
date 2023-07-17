@@ -26,14 +26,14 @@ const locations = await getLocations()
   }
 }
 </style>
-<footer class="w-full p-4 bg-pink-400 text-white" role="contentinfo">
+<footer class="w-full py-8 bg-c-pink-500 text-white" role="contentinfo">
   <div class="max-w-5xl px-4 mx-auto md:flex justify-between">
     {/* Address & Follow */}
     <div class="md:flex justify-end md:block md:order-1">
       <div>
         {locations.map(entry => (
-          <div class="uppercase">
-            <h3 class="border-b uppercase">
+          <div class="uppercase font-sans font-bold">
+            <h3 class="border-b-2 border-c-purple-500 pb-2 uppercase mb-4">
               {entry.title}
             </h3>
             <p class="mb-4">
@@ -46,7 +46,7 @@ const locations = await getLocations()
             </p>
           </div>
         ))}
-        <div class="text-white -ml-2">
+        <div class="text-white -ml-2 mt-8">
           <Follow />
         </div>
       </div>

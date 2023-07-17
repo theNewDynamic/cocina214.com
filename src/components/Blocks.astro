@@ -28,7 +28,7 @@ blocks = prepareBlocks(blocks, variant).map((block, index) => {
 
 ---
 {blocks.map(block => (
-  <div class={wrapperClass}>
+  <div class={`alt-wrapper my-4 md:my-0 ` + wrapperClass}>
     <block.Component {block} {page} />
   </div>
 ))}

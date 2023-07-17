@@ -2,10 +2,11 @@ import groq from "groq";
 import IMAGE from "./IMAGE";
 import BLOCKS from "./BLOCKS";
 import PAGE_ABOUT from "./PAGE_ABOUT";
+import URL from "./URL";
 export default groq`{
   title,
   seo,
-  'slug': slug.current,
+  ...${URL},
   _type,
   'type': _type,
   defined(image) => {

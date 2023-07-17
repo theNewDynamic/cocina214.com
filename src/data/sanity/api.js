@@ -82,7 +82,7 @@ export async function getStaffMembers() {
     !(_id in path('drafts.**'))
     && _type == "person"
     && "staff" in associations
-  ] | order(publishedAt desc)[]${PERSON}`;
+  ]${PERSON}`;
   const entries = await sanityFetch({query});
   return entries
 }

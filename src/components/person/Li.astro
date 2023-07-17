@@ -1,12 +1,17 @@
 ---
 import Image from '@components/Image.astro'
 import Title from '@components/Title.astro'
-const { entry, entry: { title, image, url } } = Astro.props
+const { entry, entry: { title, full_name, image, url, job_title } } = Astro.props
 ---
 
-<a href={url} class="flex items-center">
+<a href={url} class="">
   {image && (
-    <Image {image} params={{width: 100}} classes="img m-0 mr-2" />
+    <Image {image} params={{width: 400}} classes="img mb-2 mr-2" />
   )}
-  <Title>{title}</Title>
+  {full_name && (
+    <Title theme="small">{full_name}</Title>
+  )}
+  {job_title && (
+    <div class="font-serif">{job_title}</div>
+  )}
 </a>
