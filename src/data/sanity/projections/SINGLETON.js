@@ -17,6 +17,6 @@ export default groq`{
   },
   description,
   body,
-  blocks${BLOCKS},
+  blocks[]${BLOCKS},
   _type == 'pageAbout' => ${PAGE_ABOUT},
 }`
