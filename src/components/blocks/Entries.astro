@@ -17,8 +17,8 @@ const bgImage = image && getImageURL(image)
   )}
   <div class="py-8 half-2">
     <div class="max-w-2xl">
-      <div class="mb-4"><Title theme="underline" classes="title-currentTheme px-8 fade-in-right">{title}</Title></div>
-      <div class="text-currentTheme font-serif p-8 fade-in">
+      <div class="mb-4"><Title theme="underline" classes="title-currentTheme px-8">{title}</Title></div>
+      <div class="text-currentTheme font-serif p-8">
         {entries && (
           <div class="grid gap-8 md:grid-cols-2">
             {entries.map(({_type, title, url, description})=> (
