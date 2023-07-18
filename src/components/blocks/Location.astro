@@ -1,4 +1,5 @@
 ---
+import Wrapper from '@components/blocks/section/Wrapper.astro'
 import Links from "@components/Links.astro";
 import Title from "@components/Title.astro";
 import ResyCTA from "@components/ResyCTA.astro";
@@ -29,18 +30,11 @@ if(phone) {
   })
 }
 ---
-<div class:list={[
-  theme ? 'theme-' + theme : ''
-]}>
-  <div class:list={[
-    "wrapper",
-    "grid md:grid-cols-2",
-    "bg-currentTheme"
-  ]}>
+<Wrapper {theme}>
   {location && (
     <div class="py-8 half-1">
       <div class="max-w-lg">
-        <div class="mb-4"><Title theme="underline" classes="title-currentTheme px-8">{title}</Title></div>
+        <div class="mb-4"><Title theme="underline" classes="title-currentTheme fade-in-right px-8">{title}</Title></div>
         <div class="text-currentTheme prose font-sans p-8">
           {phone && (
             <div class="flex">
@@ -75,6 +69,4 @@ if(phone) {
       <Map {coordinates}/>
     </div>
   )}
-
-  </div>
-</div>
+</Wrapper>

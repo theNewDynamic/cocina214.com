@@ -1,5 +1,5 @@
 import { defineType } from 'sanity'
-import { title, seo, slug, date, description, image, gallery, references, url, file } from '../fields'
+import { title, seo, slug, date, description, image, gallery, references, url, file, body } from '../fields'
 import { defaultOrdering as orderings } from '../orderings'
 import { TfiAnnouncement as icon } from "react-icons/tfi"
 
@@ -13,6 +13,7 @@ export default defineType({
     title,
     date,
     description,
+    body,
     {
       type: "array",
       name: "links",

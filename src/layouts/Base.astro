@@ -8,6 +8,7 @@ import { getSEOData } from "@util/seo.js";
 import "/src/styles/main.css";
 import "/src/styles/fonts.css";
 import "/src/styles/theme_blocks.css";
+import "/src/styles/transitions.css";
 const { entry, section = "default" } = Astro.props;
 let mainClasses = "pb-32 max-w-5xl px-4 mx-auto" && ""
 let SEOData = getSEOData({
@@ -42,9 +43,10 @@ let SEOData = getSEOData({
 		<Analytics />
 		<script>
 			import Alpine from "alpinejs";
+			import intersect from '@alpinejs/intersect'
 
 			window.Alpine = Alpine;
-
+			Alpine.plugin(intersect)
 			Alpine.start();
 		</script>
 

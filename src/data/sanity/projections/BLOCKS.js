@@ -2,6 +2,7 @@ import groq from "groq";
 import IMAGE from "./IMAGE";
 import PORTABLE_TEXT_BLOCK from "./PORTABLE_TEXT_BLOCK";
 import LOCATION from "./LOCATION";
+import URL from "./URL";
 export default groq`{
   'layout': _type,
   _type == 'blocks/text'=> {
@@ -29,5 +30,21 @@ export default groq`{
     theme,
     location->${LOCATION},
   },
-
+  _type == "blocks/entries" => {
+    'layout': 'entries',
+    title,
+    image${IMAGE},
+    theme,
+    entries[]->{
+      title,
+      _type,
+      ...${URL},
+      _type == "notice" => {
+        'description': coalesce(body[]${PORTABLE_TEXT_BLOCK}, description)
+      },
+      _type == "post" => {
+        description
+      }
+    }
+  }
 }`

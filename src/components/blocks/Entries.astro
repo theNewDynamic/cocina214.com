@@ -1,0 +1,37 @@
+---
+import Image from '@components/Image.astro';
+import Title from '@components/Title.astro';
+import Prose from '@components/Prose.astro';
+import Wrapper from '@components/blocks/section/Wrapper.astro';
+import { getImageURL } from '@util/sanity/image';
+const { block, block: { title, theme, image, entries } } = Astro.props
+const bgImage = image && getImageURL(image) 
+---
+<Wrapper {theme}>
+  {bgImage && (
+    <div class="bg-cover bg-center half-1" style={{
+      backgroundImage: `url(${bgImage})`,
+    }}>
+      <Image {image} classes="md:hidden w-full" alt={`image from ${title}`} params={{width: 800}} />
+    </div>
+  )}
+  <div class="py-8 half-2">
+    <div class="max-w-2xl">
+      <div class="mb-4"><Title theme="underline" classes="title-currentTheme px-8 fade-in-right">{title}</Title></div>
+      <div class="text-currentTheme font-serif p-8 fade-in">
+        {entries && (
+          <div class="grid gap-8 md:grid-cols-2">
+            {entries.map(({_type, title, url, description})=> (
+              <div>
+                <h3 class="font-bold text-lg">{title} {_type}</h3>
+                <div class="prose text-currentTheme">
+                  <Prose text={description} />
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>  
+    </div>
+  </div>
+</Wrapper>

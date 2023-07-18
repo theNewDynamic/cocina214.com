@@ -5,14 +5,12 @@ import BlockSection from '@components/blocks/Section.astro'
 import BlockLocation from './blocks/Location.astro'
 import BlockForm from './blocks/Form.astro'
 import { prepareBlocks } from '@util/helpers'
+import BlockEntries from './blocks/Entries.astro'
 const { page, wrapperClass } = Astro.props
 let { blocks, variant = "default" } = Astro.props
 blocks = prepareBlocks(blocks, variant).map((block, index) => {
   let Component = Default
   switch (block.layout) {
-    case "posts":
-      Component = BlockPosts
-      break;
     case "text":
       Component = BlockText
       break;
@@ -24,6 +22,9 @@ blocks = prepareBlocks(blocks, variant).map((block, index) => {
       break;
     case "form":
       Component = BlockForm
+    break;
+      case "entries":
+      Component = BlockEntries
       break;
     default:
       break;

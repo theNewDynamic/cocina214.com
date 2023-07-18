@@ -1,0 +1,37 @@
+---
+const { theme } = Astro.props
+---
+<style lang="scss" is:global>
+  @media (min-width: theme('screens.md')) {
+    .alt-wrapper .half-1{
+      order: 1;
+    }
+    .alt-wrapper .half-2{
+      order: 2
+    }
+    .alt-wrapper:nth-child(even) .half-1{
+      order: 2
+    }
+    .alt-wrapper:nth-child(even) .half-2{
+      order: 1;
+      & > div {
+        margin-right: 0;
+        margin-left: auto;
+      }
+    }
+  }
+  </style>
+<div 
+  x-data="{animate: false}" x-intersect:enter="animate = true"
+  :class="animate ? 'animated' : ''"
+  class:list={[
+      theme ? 'theme-' + theme : ''
+  ]}>
+  <div class:list={[
+    "wrapper",
+    "grid md:grid-cols-2",
+    "bg-currentTheme"
+  ]}>
+    <slot />
+  </div>
+</div>
