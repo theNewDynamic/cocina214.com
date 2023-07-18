@@ -10,7 +10,7 @@ import "/src/styles/fonts.css";
 import "/src/styles/theme_blocks.css";
 import "/src/styles/transitions.css";
 const { entry, section = "default" } = Astro.props;
-let mainClasses = "pb-32 max-w-5xl px-4 mx-auto" && ""
+let mainClasses = "bg-white pb-32 max-w-[2000px] mx-auto"
 let SEOData = getSEOData({
 	...entry,
 });
@@ -54,7 +54,7 @@ let SEOData = getSEOData({
 		<slot name="to-head" />
 	</head>
 	<body
-		class="font-sans"
+		class="font-sans bg-slate-100"
 	>
 		<slot name="header">
 			<Header />

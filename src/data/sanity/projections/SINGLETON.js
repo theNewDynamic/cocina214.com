@@ -13,9 +13,7 @@ export default groq`{
     images[]${IMAGE}
   },
   'type': _type,
-  defined(image) => {
-    'image': ${IMAGE}
-  },
+  image${IMAGE},
   description,
   body,
   blocks[]${BLOCKS},

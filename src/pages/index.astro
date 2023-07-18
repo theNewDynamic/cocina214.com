@@ -1,6 +1,10 @@
 ---
 import Layout from '@layouts/page/Single.astro'
 import { getHome } from '@data/sanity/api'
-const entry = await getHome()
+let entry = await getHome()
+entry = {
+  ...entry,
+  home: true,
+}
 ---
 <Layout {entry} />
