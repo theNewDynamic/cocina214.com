@@ -4,7 +4,8 @@
   --text-color: var(--primary);
   --border-color: var(--primary);
   --bg-color: theme('colors.white');
-  --bg-color-secondary: theme('colors.gray.300')
+  --bg-color-secondary: theme('colors.gray.300');
+  --bg-color-alternate: theme('colors.gray.400');
 }
 .text-currentTheme{
   color: var(--text-color);
@@ -22,9 +23,9 @@
   background-color: var(--bg-color-secondary);
 }
 
-.hover\:bg-currentTheme:hover{
-  background-color: var(--primary);
-  border-color: var(--primary);
+.hover\:bg-currentTheme-alternate:hover{
+  background-color: var(--bg-color-alternate);
+  border-color: var(--bg-color-alternate);
 }
 .theme-green, .theme-purple{
   color: white;
@@ -35,8 +36,8 @@
   --text-color: white;
   --border-color: var(--primary);
   --bg-color: theme('colors.c-green.500');
-  --bg-color-secondary: theme('colors.c-green.400');
-  --bg-color-opacity: rgba(var(--bg-color), 0.5);
+  --bg-color-secondary: theme('colors.c-green.600');
+  --bg-color-alternate: theme('colors.c-green.400');
 }
   .theme-green .bg-opacity-currentTheme{
     @apply bg-green-500 bg-opacity-50;

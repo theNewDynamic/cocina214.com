@@ -10,6 +10,7 @@ import MailchimpForm from "@components/pt/MailchimpForm.astro"
 import Video from "@components/pt/Video.astro";
 import BlockFiles from "./BlockFiles.astro";
 import BlockLinks from "./BlockLinks.astro";
+import BlockLocation from "./BlockLocation.astro";
 // Lib
 import { mergeComponents } from "astro-portabletext/utils";
 import Block from "./Block.astro";
@@ -32,6 +33,7 @@ const components = mergeComponents({
     blockMailchimp: MailchimpForm,
     blockFiles: BlockFiles,
     blockLinks: BlockLinks,
+    blockLocation: BlockLocation,
   },
   //block: MyBlock,
 }, overrideComponents)

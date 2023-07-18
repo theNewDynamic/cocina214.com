@@ -1,5 +1,6 @@
 import groq from "groq"
 import IMAGE from "./IMAGE"
+import LOCATION from "./LOCATION"
 export default groq`{
   _type == 'blockFiles' => {
     _type,
@@ -19,6 +20,11 @@ export default groq`{
       
     }
   },
+  _type == 'blockLocation' => {
+    _type,
+    _key,
+    location->${LOCATION}
+  },
   _type == 'image' => {
     _type,
     _key,
@@ -29,5 +35,5 @@ export default groq`{
       }
     }
   },
-  !(_type in ['blockFiles', 'image', 'blockLinks']) => {...}
+  !(_type in ['blockFiles', 'image', 'blockLinks', 'blockLocation']) => {...}
 }`

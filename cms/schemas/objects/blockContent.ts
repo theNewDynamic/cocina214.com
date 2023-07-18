@@ -6,6 +6,7 @@ import blockHTML from './blockHTML'
 import blockVideo from './blockVideo'
 import blockFiles from './blockFiles'
 import blockLinks from './blockLinks'
+import blockLocation from './blockLocation'
 const displayOptions = [
   { title: 'Float Left', value: 'float-left' },
   { title: 'Float Right', value: 'float-right' },
@@ -96,5 +97,6 @@ export default defineType({
     defineArrayMember(blockLinks),
     defineArrayMember(blockHTML),
     defineArrayMember(blockVideo),
+    defineArrayMember(blockLocation),
   ],
 })
