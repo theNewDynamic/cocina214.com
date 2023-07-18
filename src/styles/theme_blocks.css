@@ -21,6 +21,7 @@
 .bg-currentTheme-secondary{
   background-color: var(--bg-color-secondary);
 }
+
 .hover\:bg-currentTheme:hover{
   background-color: var(--primary);
   border-color: var(--primary);

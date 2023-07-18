@@ -8,6 +8,7 @@ import SINGLETON from './projections/SINGLETON';
 import PERSON from './projections/PERSON';
 import LOCATION from './projections/LOCATION';
 import TAXONOMY_TERM from './projections/TAXONOMY_TERM';
+import PRODUCT from './projections/PRODUCT';
 
 export async function getEntry(id){
   const query = groq`*[_id == $id][0]{
@@ -36,6 +37,16 @@ export async function getPosts() {
     && _type == "post"
   ] | order(publishedAt desc)[]${POST}`;
   const entries = await sanityFetch({query, hash: 'getPosts'});
+  return entries
+}
+
+
+export async function getProducts() {
+  const query = groq`*[
+    !(_id in path('drafts.**'))
+    && _type == "product"
+  ] | order(publishedAt desc)[]${PRODUCT}`;
+  const entries = await sanityFetch({query});
   return entries
 }
 
@@ -100,6 +111,7 @@ export async function getSingletons() {
   const params = {
     types: [
       'pageAbout',
+      'pageShop'
     ]
   }
   const query = groq`*[

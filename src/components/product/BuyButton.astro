@@ -1,0 +1,36 @@
+---
+import { getData } from "@util/snipcart";
+const {
+	entry,
+	entry: {
+		title,
+		url,
+		image,
+		descriptionText: description,
+		association,
+		sales_data,
+	},
+} = Astro.props;
+const { price } = sales_data;
+const snipcart_attributes = getData({
+	title,
+	url,
+	image,
+	description,
+	sales_data,
+});
+---
+
+{
+	price && (
+		<button
+      class:list={[
+        "snipcart-add-item",
+        "font-bold bg-c-purple-500 uppercase hover:bg-c-pink-500 text-white px-4 py-2"
+      ]}
+			{...snipcart_attributes}
+		>
+			Add to Cart
+		</button>
+	)
+}

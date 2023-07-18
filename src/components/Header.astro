@@ -12,6 +12,12 @@ import '/src/styles/hamburger.css'
     color: currentColor;
     fill: currentColor;
   }
+  [astro-icon="cart"]{
+    width: 2rem;
+    height: 2rem;
+    color: currentColor;
+    fill: currentColor;
+  }
 </style>
 <style is:global>
   input[type=checkbox]#expandable-nav-side-input {
@@ -32,19 +38,23 @@ import '/src/styles/hamburger.css'
 </style>
 <header class="bg-white">
   <h1 class="sr-only">{site.title}</h1>
-  <div class="max-w-5xl px-4 mx-auto py-4 md:py-12 relative">
+  <div class="max-w-5xl px-4 mx-auto py-4 md:pt-12 relative">
     <div class="flex justify-between items-center md:mb-12">
       <div class="hidden md:block">&nbsp;</div>
       {/* center */}
       <div class="md:flex justify-center">
         <img src="/images/logo.jpg" alt="" class="h-auto w-[12rem] md:w-[364px]">
       </div>
-      <div class="md:hidden">
-        <label aria-expanded="false" for="expandable-nav-side-input"  class="bg-transparent block w-[2rem] z-10 cursor-pointer  hamburger hamburger--squeeze">
+      <div class="flex items-center justify-end">
+        <label aria-expanded="false" for="expandable-nav-side-input"  class="md:hidden bg-transparent block w-[2rem] z-10 cursor-pointer  hamburger hamburger--squeeze">
           <span class="block relative w-full hamburger-box">
             <span class="block hamburger-inner"></span>
           </span>
         </label>
+        <button class="ml-4 relative snipcart-checkout">
+          <Icon name="cart" />
+          <span class=" absolute w-4 h-4 text-xs text-center rounded-full  bg-red-600 text-white top-0 right-0 snipcart-items-count"></span>
+        </button>
       </div>
     </div>
     <input type="checkbox" id="expandable-nav-side-input" name="" value="" />

@@ -1,20 +1,13 @@
 ---
 const { links } = Astro.props
+import Button from "./Button.astro";
 ---
-<style>
-  a{
-    background-color: var(--bg-color-secondary)
-  }
-  a:hover {
-    background-color: var(--bg-color-opacity)
-  }
-</style>
 <div class="not-prose">
   {!!links.length && (
     <ul class="flex -mx-4 my-4">
       {links.map(({copy, url})=> (
         <li>
-          <a class="block p-4 uppercase font-sans font-bold mx-4" href={url}>{copy}</a>  
+          <Button {copy} {url} />
         </li>
       ))}
     </ul>

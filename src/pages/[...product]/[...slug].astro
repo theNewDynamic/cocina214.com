@@ -1,0 +1,23 @@
+---
+import { getProducts } from "@data/sanity/api"
+import Layout from '@layouts/product/Single.astro'
+import { url_mapping } from '@data/site'
+export async function getStaticPaths() {
+  const entries = await getProducts()
+  return entries.map(entry => {
+    const slug = entry.slug
+    return {
+      params: {
+        product: url_mapping.event || 'product',
+        slug,
+      },
+      props: {
+        entry
+      }
+    }
+  })
+}
+
+const { entry } = Astro.props
+---
+<Layout {entry} />

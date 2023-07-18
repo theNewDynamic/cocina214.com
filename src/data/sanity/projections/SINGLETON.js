@@ -3,6 +3,7 @@ import IMAGE from "./IMAGE";
 import BLOCKS from "./BLOCKS";
 import PAGE_ABOUT from "./PAGE_ABOUT";
 import URL from "./URL";
+import PAGE_SHOP from "./PAGE_SHOP";
 export default groq`{
   title,
   seo,
@@ -19,4 +20,5 @@ export default groq`{
   body,
   blocks[]${BLOCKS},
   _type == 'pageAbout' => ${PAGE_ABOUT},
+  _type == 'pageShop' => ${PAGE_SHOP},
 }`

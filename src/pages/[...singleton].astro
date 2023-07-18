@@ -1,6 +1,7 @@
 ---
 import { getSingletons, getStaffMembers } from "@data/sanity/api"
 import LayoutAbout from "@layouts/page/About.astro"
+import LayoutShop from "@layouts/product/List.astro"
 export const prerender = true;
 
 export async function getStaticPaths() {
@@ -24,6 +25,9 @@ let { entry } = Astro.props
 switch (entry._type) {
   case 'pageAbout':
     Layout = LayoutAbout
+    break;
+  case 'pageShop':
+    Layout = LayoutShop
     break;
   default:
     break;

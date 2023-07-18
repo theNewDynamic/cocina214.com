@@ -1,0 +1,34 @@
+---
+const { entry, entry: { title, body, entries } } = Astro.props
+import Title from '@components/Title.astro';
+import Base from '@layouts/Base.astro'
+import Button from '@components/Button.astro';
+import Prose from '@components/Prose.astro';
+import Li from '@components/product/Li.astro';
+
+---
+<Base {entry} >
+
+  <div class="w-full px-4 py-16 max-w-5xl mx-auto">
+    <div class="mb-8">
+      <Title theme="underline" classes="mb-8">Order Online</Title>
+      {body && (
+        <div class="font-serif"><Prose text={body} /></div>
+      )}
+      <div class="my-6 theme-green">
+        <Button url="https://cocina214.alohaorderonline.com/" copy="Order Now" />
+      </div>
+    </div>
+    {entries && (
+      <div class="mb-8">
+        <Title theme="underline" classes="mb-8">Order Online</Title>
+      </div>
+      <div class="grid md:grid-cols-3 gap-4">
+        {entries.map(entry => (
+          <Li {entry} />
+        ))}
+      </div>
+
+    )}
+  </div>
+</Base>

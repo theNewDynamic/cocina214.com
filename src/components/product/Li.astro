@@ -1,0 +1,12 @@
+---
+import Image from "@components/Image.astro";
+import Title from "@components/Title.astro";
+const { entry, entry: { title, url, images } } = Astro.props
+let image = images.length && images[0]
+---
+<a class="block" href={url}>
+  {image && (
+    <Image {image} classes="mb-4" params={{width: 500}} />
+  )}
+  <Title theme="small">{title}</Title>
+</a>

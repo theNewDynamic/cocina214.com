@@ -2,7 +2,7 @@
 const { files } = Astro.props.node
 ---
 
-<div>
+<div class="not-prose">
   {!!files.length && (
     <ul class="my-4">
       {files.map(({copy, url})=> (
