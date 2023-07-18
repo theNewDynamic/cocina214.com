@@ -1,0 +1,25 @@
+---
+import ContactForm from "@components/Form.astro";
+import Title from "@components/Title.astro";
+import Prose from "@components/Prose.astro";
+const { block, block:  { title, copy } } = Astro.props
+---
+
+<div class="md:px-8 py-16">
+  <div class="mb-4"><Title theme="underline" classes="border-c-purple">{title}</Title></div>
+  <div class:list={[
+    "wrapper",
+    "grid md:grid-cols-2",
+  ]}>
+    {!!copy && (
+      <div class="max-w-lg">
+        <div class="prose font-serif md:pr-8">
+          <Prose text={copy} />
+        </div>  
+      </div>
+    )}
+    <div class="mt-8 md:mt-0">
+      <ContactForm />
+    </div>
+  </div>
+</div>

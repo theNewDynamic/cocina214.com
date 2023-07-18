@@ -1,0 +1,80 @@
+---
+import Links from "@components/Links.astro";
+import Title from "@components/Title.astro";
+import ResyCTA from "@components/ResyCTA.astro";
+import Map from "@components/Map.astro";
+const { block, block: { theme, location, location: {
+  address_1,
+  city,
+  state,
+  zip,
+  phone,
+  google_map_url,
+  coordinates,
+  hours,
+  email } } } = Astro.props
+let { title, location: { title: location_title } } = block
+title = location_title || title
+let links = []
+if(google_map_url) {
+  links.push(  {
+    url: google_map_url,
+    copy: 'Get Directions'
+  })
+}
+if(phone) {
+  links.push({
+    url: `tel:${phone}`,
+    copy: 'Call Us'
+  })
+}
+---
+<div class:list={[
+  theme ? 'theme-' + theme : ''
+]}>
+  <div class:list={[
+    "wrapper",
+    "grid md:grid-cols-2",
+    "bg-currentTheme"
+  ]}>
+  {location && (
+    <div class="py-8 half-1">
+      <div class="max-w-lg">
+        <div class="mb-4"><Title theme="underline" classes="title-currentTheme px-8">{title}</Title></div>
+        <div class="text-currentTheme prose font-sans p-8">
+          {phone && (
+            <div class="flex">
+              <span>Phone:</span>&nbsp;<span>{phone}</span>
+            </div>
+          )}
+          {address_1 && (
+            <div class="flex">
+              <span>Address:</span>&nbsp;<span>{address_1}</span>
+            </div>
+          )}
+          {!!links.length && (
+            <Links {links} />
+          )}
+          {hours && (
+            <div class="mt-8">
+              Hours:
+              {hours.map(({label, time})=> (
+                <div class="grid grid-cols-2">
+                  <span>{label}</span><span>{time}</span>
+                </div>
+              ))}
+            </div>
+          )}
+          <ResyCTA />
+        </div>  
+      </div>
+    </div>
+  )}
+  {coordinates && (
+    <div class="relative half-2">
+      <Map {coordinates}/>
+    </div>
+  )}
+
+  </div>
+</div>

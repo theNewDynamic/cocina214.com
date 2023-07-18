@@ -6,5 +6,8 @@ export default groq`{
   state,
   zip,
   phone,
-  email
+  email,
+  google_map_url,
+  hours,
+  coordinates,
 }`
