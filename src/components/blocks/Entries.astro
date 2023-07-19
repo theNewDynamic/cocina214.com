@@ -23,7 +23,7 @@ const bgImage = image && getImageURL(image)
           <div class="grid gap-8 md:grid-cols-2">
             {entries.map(({_type, title, url, description})=> (
               <div>
-                <h3 class="font-bold text-lg">{title} {_type}</h3>
+                <h3 class="font-bold text-lg">{title}</h3>
                 <div class="prose text-currentTheme">
                   <Prose text={description} />
                 </div>
