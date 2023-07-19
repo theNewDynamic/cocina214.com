@@ -6,6 +6,7 @@ import Wrapper from '@components/blocks/section/Wrapper.astro';
 import { getImageURL } from '@util/sanity/image';
 const { block, block: { title, theme, image, entries } } = Astro.props
 const bgImage = image && getImageURL(image) 
+
 ---
 <Wrapper {theme}>
   {bgImage && (
@@ -16,17 +17,39 @@ const bgImage = image && getImageURL(image)
     </div>
   )}
   <div class="py-8 half-2">
-    <div class="max-w-2xl">
-      <div class="mb-4"><Title theme="underline" classes="title-currentTheme px-8">{title}</Title></div>
+    <div class="max-w-2xl py-8 px-14">
+      <div class="mb-4">
+        <Title theme="underline" classes="title-currentTheme px-8">
+          {title}
+        </Title>
+      </div>
       <div class="text-currentTheme font-serif p-8">
-        {entries && (
+        {entries && (          
           <div class="grid gap-8 md:grid-cols-2">
-            {entries.map(({_type, title, url, description})=> (
+            {entries.map(({title, url, links, description})=> (              
               <div>
-                <h3 class="font-bold text-lg">{title}</h3>
-                <div class="prose text-currentTheme">
+                <h3 class="font-bold text-xl mb-2">
+                  {title}
+                  </h3>
+                <div class="prose prose-sm font-sans text-currentTheme">
                   <Prose text={description} />
                 </div>
+                
+                {links && (
+                  <div>
+                    {links.map(({copy, url, file})=>                    
+                      (file || url) && 
+                      <a href={file ? file : url} target="_blank" class="font-brand block py-2 tracking-wide hover:underline hover:opacity-80 transition">{copy} &raquo;                      
+                      </a>                                          
+                    )}
+                  </div>
+                  )}
+                {!links &&                
+                  url &&
+                    <a href={url} class="font-brand block py-4 tracking-wide hover:underline hover:opacity-80 transition">
+                    Learn More &raquo;
+                  </a>                  
+                }                               
               </div>
             ))}
           </div>

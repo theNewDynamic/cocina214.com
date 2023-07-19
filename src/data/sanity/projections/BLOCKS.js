@@ -1,5 +1,6 @@
 import groq from "groq";
 import IMAGE from "./IMAGE";
+import NOTICE from "./NOTICE";
 import PORTABLE_TEXT_BLOCK from "./PORTABLE_TEXT_BLOCK";
 import LOCATION from "./LOCATION";
 import URL from "./URL";
@@ -39,8 +40,9 @@ export default groq`{
       title,
       _type,
       ...${URL},
-      _type == "notice" => {
-        'description': coalesce(body[]${PORTABLE_TEXT_BLOCK}, description)
+      
+      _type == "notice" => {        
+        ...${NOTICE}        
       },
       _type == "post" => {
         description

@@ -2,6 +2,7 @@ import groq from 'groq'
 import sanityFetch from "@util/sanity/fetch"
 
 import POST from "./projections/POST";
+import NOTICE from "./projections/NOTICE";
 import EVENT from './projections/EVENT';
 import PAGE from './projections/PAGE';
 import SINGLETON from './projections/SINGLETON';
@@ -17,6 +18,7 @@ export async function getEntry(id){
       associations,
     },
     _type == "post" => ${POST},
+    _type == "notice" => ${NOTICE},
     _type == "event" => ${EVENT},
     _type == "person" => ${PERSON},
     _type == "page" => ${PAGE},
