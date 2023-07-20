@@ -5,14 +5,14 @@ import Prose from "@components/Prose.astro";
 const { entry, entry: { body, image} } = Astro.props
 ---
 <div class="max-w-5xl mx-auto py-12">
-  <div class="flex justify-between">
+  <div class="md:flex justify-between">
     {image && (
-      <div class="w-[55%]">
+      <div class="w-full md:w-[55%]">
         <Image {image} params={{width: 800}} />  
       </div>
     )}
     {body && (
-      <div class="w-[40%] ">
+      <div class="w-full md:w-[40%] p-8 md:p-0">
         <div class="prose font-serif">
           <Prose text={body} />
         </div>

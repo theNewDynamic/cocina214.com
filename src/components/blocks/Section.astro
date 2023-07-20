@@ -10,15 +10,17 @@ const bgImage = image && getImageURL(image)
 ---
 <Wrapper {theme}>
   {bgImage && (
-    <div class="bg-cover bg-center half-1" style={{
+    <div class="bg-cover bg-no-repeat bg-center half-1" style={{
       backgroundImage: `url(${bgImage})`,
     }}>
-      <Image {image} classes="md:hidden w-full" alt={`image from ${title}`} params={{width: 800}} />
-    </div>
+    <Image {image} classes="md:hidden w-full" alt={`image from ${title}`} params={{width: 800}} />
+  </div>
+  
+    
   )}
   {!!copy && (
     <div class="py-8 half-2">
-      <div class="max-w-2xl py-8 px-14">
+      <div class="max-w-2xl py-8 lg:px-14">
         <div class="mb-4">
           <Title theme="underline" classes="title-currentTheme px-8">
             {title}
