@@ -2,3 +2,8 @@
 .test_nope{
   color: "red"
 }
+
+button.snipcart-button-primary
+ {
+  background-color: #1a4db3; /* Overrides reset*/  
+}
