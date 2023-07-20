@@ -43,7 +43,21 @@
     @apply bg-green-500 bg-opacity-50;
   }
 
-.theme-purple{
+  .theme-green-dark{
+    --primary: theme('colors.c-green.400');
+    --title-color: var(--primary);
+    --text-color: white;
+    --border-color: var(--primary);
+    --bg-color: theme('colors.c-green.500');
+    --bg-color-secondary: theme('colors.c-green.600');
+    --bg-color-alternate: theme('colors.c-green.400');
+  }
+    .theme-green-dark .bg-opacity-currentTheme{
+      @apply bg-green-700 bg-opacity-50;
+    }
+  
+
+  .theme-purple{
   --primary: theme('colors.c-purple.500');
   --title-color: theme('colors.c-purple.400');
   --text-color: white;
