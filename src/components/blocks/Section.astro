@@ -18,9 +18,13 @@ const bgImage = image && getImageURL(image)
   )}
   {!!copy && (
     <div class="py-8 half-2">
-      <div class="max-w-2xl">
-        <div class="mb-4"><Title theme="underline" classes="title-currentTheme px-8">{title}</Title></div>
-        <div class="text-currentTheme prose font-serif p-8">
+      <div class="max-w-2xl py-8 px-14">
+        <div class="mb-4">
+          <Title theme="underline" classes="title-currentTheme px-8">
+            {title}
+          </Title>
+        </div>
+        <div class="text-currentTheme prose prose-a:text-white prose-h3:font-brand prose-h3:text-white font-serif p-8">
           <Prose text={copy} />
         </div>  
       </div>
