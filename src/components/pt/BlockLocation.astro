@@ -5,12 +5,14 @@ import ResyCTA from '@components/ResyCTA.astro';
 {location && (
 <div class="my-8 border-t-2 border-currentTheme">
   <h3 class="font-bold text-white uppercase font-brand">{title}</h3>
-  <div class="flex justify-between items-center">
+  <div class="md:flex justify-between items-center">
     <div>
       <div>{address_1}</div>
       <div>{phone}</div>
     </div>
-    <ResyCTA />
+    <div class="mt-8 md:mt-0">
+      <ResyCTA />
+    </div>
   </div>
 </div>
 )}
