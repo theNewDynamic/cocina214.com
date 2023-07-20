@@ -12,7 +12,7 @@ export default {
   description,
   image,
   ga_id: 'UA-xxxx-2',
-  url: import.meta.env.SITE ? import.meta.env.SITE : 'https://www.cocina214.com',
+  url: import.meta.env.SITE ? import.meta.env.SITE : 'https://cocina214.com',
   env: import.meta.env.ASTRO_ENV ? import.meta.env.ASTRO_ENV : "dev",
   // JSON LD
   site_id: `cocina214`,
