@@ -4,7 +4,9 @@ import Base from '@layouts/Base.astro'
 import Li from '@components/post/Li.astro'
 ---
 <Base {entry}>
-  <div class="w-full pt-8 px-4 md:px-16">
+  <div class="w-full pt-8 px-4 md:px-16 pb-32 max-w-6xl mx-auto">
     <Li list={false} {entry} />
+    <a href="/news/" class="py-18 font-brand text-2xl hover:underline hover:text-c-purple-500">Back to All News</a>
   </div>
+  
 </Base>

@@ -6,27 +6,27 @@ import { categories } from "@data/menus"
 const currentUrl = new URL(Astro.request.url).pathname;
 ---
 <Base {entry}>
-  <div class="border-t-2 border-fuchsia-600 w-full">
-    <ul class="flex w-full justify-center items-center font-serif">
+  <div class="border-t-2 border-c-purple-400 max-w-5xl mx-auto w-full">
+    <ul class="flex w-full justify-center items-center font-serif pb-14">
       {categories.map(({copy, url})=> (
       <li>
         <a class:list={[
-          "block px-8 py-4",
+          "block px-8 py-4 hover:text-c-pink-600 hover:underline transition",
           url == currentUrl ? "opacity-50" : ""
         ]} href={url}>{copy}</a>
       </li>
       ))}
     </ul>
   </div>
-  <div class="w-full pt-8 px-4 md:px-16">
+  <div class="w-full pt-8 px-4 md:px-16 max-w-6xl mx-auto">
     <div>
       {entries.map((entry, index) => (
         <Li {entry} />
       ))}
     </div>
   </div>
-  <div class="w-full flex justify-between pt-2 mb-32 border-t-2 border-purple-600">
-    {prev ? <a data-prev class="font-brand text-2xl font-bold" href={prev}>Previous Page</a> : <div>&nbsp;</div>}
-    {next ? <a data-next class="font-brand text-2xl font-bold" href={next}>Next Page</a> : <div>&nbsp;</div>}
+  <div class="w-full flex justify-between pt-2 max-w-6xl mx-auto pb-32 border-t-2 border-c-purple-400">
+    {prev ? <a data-prev class="hover:text-c-pink-600 hover:underline transition font-brand text-2xl font-bold" href={prev}>Previous Page</a> : <div>&nbsp;</div>}
+    {next ? <a data-next class="hover:text-c-pink-600 hover:underline transition font-brand text-2xl font-bold" href={next}>Next Page</a> : <div>&nbsp;</div>}
   </div>
 </Base>
