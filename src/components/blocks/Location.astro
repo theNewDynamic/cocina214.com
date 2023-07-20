@@ -32,7 +32,7 @@ if(phone) {
 ---
 <Wrapper {theme}>
   {location && (
-    <div class="py-8 half-1">
+    <div class="py-12 half-2">
       <div class="max-w-lg">
         <div class="mb-4"><Title theme="underline" classes="title-currentTheme fade-in-right px-8">{title}</Title></div>
         <div class="text-currentTheme prose font-sans p-8">
@@ -67,7 +67,7 @@ if(phone) {
     </div>
   )}
   {coordinates && (
-    <div class="relative half-2">
+    <div class="relative half-1">
       <Map {coordinates}/>
     </div>
   )}
