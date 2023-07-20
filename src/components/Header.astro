@@ -1,85 +1,106 @@
 ---
-import site from '@data/site'
-import { main } from '@data/menus'
-import { Icon } from 'astro-icon';
-import Follow from '@components/socials/Follow.astro'
-import '/src/styles/hamburger.css'
+import site from "@data/site";
+import { main } from "@data/menus";
+import { Icon } from "astro-icon";
+import Follow from "@components/socials/Follow.astro";
+import "/src/styles/hamburger.css";
+const currentUrl = new URL(Astro.request.url).pathname;
 ---
+
 <style>
-  [astro-icon="menu"]{
-    width: 2rem;
-    height: 2rem;
-    color: currentColor;
-    fill: currentColor;
-  }
-  [astro-icon="cart"]{
-    width: 2rem;
-    height: 2rem;
-    color: currentColor;
-    fill: currentColor;
-  }
+	[astro-icon="menu"] {
+		width: 2rem;
+		height: 2rem;
+		color: currentColor;
+		fill: currentColor;
+	}
+	[astro-icon="cart"] {
+		width: 2rem;
+		height: 2rem;
+		color: currentColor;
+		fill: currentColor;
+	}
 </style>
 <style is:global>
-  input[type=checkbox]#expandable-nav-side-input {
-    display: none;
-  }
-  @media (max-width: 767px) {
-    #expandable-nav-side {
-      transition: transform 500ms ease-out;
-      transform: translateX(100%);
-    }
+	input[type="checkbox"]#expandable-nav-side-input {
+		display: none;
+	}
+	@media (max-width: 767px) {
+		#expandable-nav-side {
+			transition: transform 500ms ease-out;
+			transform: translateX(100%);
+		}
 
-    #expandable-nav-side-input:checked + #expandable-nav-side {
-      transform: translateX(0)
-    }
-  }
-
-
+		#expandable-nav-side-input:checked + #expandable-nav-side {
+			transform: translateX(0);
+		}
+	}
 </style>
 <header class="bg-white max-w-[2000px] mx-auto">
-  <h1 class="sr-only">{site.title}</h1>
-  <div class="max-w-[66rem] px-4 mx-auto py-4 md:pt-10 relative">
-    <div class="flex justify-between items-center md:mb-6">
-      <div class="hidden md:block">&nbsp;</div>
-      {/* center */}
-      
-      <div class="md:flex justify-center lg:ml-12">
-        <a href="/" class="no-underline hover:opacity-80 hover:cursor-pointer transition-opacity">
-          <img src="/images/logo.jpg" alt="Cocina 214 Logo" class="h-auto w-[12rem] md:w-[364px]">
-        </a>
-      </div>
-      
-      <div class="flex items-center justify-end">
-        <label aria-expanded="false" for="expandable-nav-side-input"  class="md:hidden bg-transparent block w-[2rem] z-10 cursor-pointer  hamburger hamburger--squeeze">
-          <span class="block relative w-full hamburger-box">
-            <span class="block hamburger-inner"></span>
-          </span>
-        </label>
-        <button class="ml-4 relative snipcart-checkout">
-          <Icon name="cart" />
-          <span class=" absolute w-4 h-4 text-xs text-center rounded-full  bg-red-600 text-white top-0 right-0 snipcart-items-count"></span>
-        </button>
-      </div>
-      
-    </div>
-    
-    
-    
-    <input type="checkbox" id="expandable-nav-side-input" name="" value="" />
-    
-    
-    
-    <div id="expandable-nav-side" class="flex items-center fixed md:block md:static bg-white top-[50px] z-50 bottom-0 left-0 right-0">
-      <ul class="w-full md:flex flex-wrap items-center justify-between px-4 md:px-0">
-        {main.map(({url, copy}) => (
-          <li class="text-[17px] leading-none">
-            <a class="w-full block text-center border-b md:border-0 md:text-left md:w-auto text-c-green-400 md:uppercase py-4 hover:text-black transition md:font-semibold tracking-wide" href={url} title={copy}>
-              {copy}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
+	<h1 class="sr-only">{site.title}</h1>
+	<div class="max-w-[66rem] px-4 mx-auto py-4 md:pt-10 relative">
+		<div class="flex justify-between items-center md:mb-6">
+			<div class="hidden md:block">&nbsp;</div>
+			{/* center */}
 
-  </div>
+			<div class="md:flex justify-center lg:ml-12">
+				<a
+					href="/"
+					class="no-underline hover:opacity-80 hover:cursor-pointer transition-opacity"
+				>
+					<img
+						src="/images/logo.jpg"
+						alt="Cocina 214 Logo"
+						class="h-auto w-[12rem] md:w-[364px]"
+					/>
+				</a>
+			</div>
+
+			<div class="flex items-center justify-end">
+				<label
+					aria-expanded="false"
+					for="expandable-nav-side-input"
+					class="md:hidden bg-transparent block w-[2rem] z-10 cursor-pointer hamburger hamburger--squeeze"
+				>
+					<span class="block relative w-full hamburger-box">
+						<span class="block hamburger-inner"></span>
+					</span>
+				</label>
+				<button class="ml-4 relative snipcart-checkout">
+					<Icon name="cart" />
+					<span
+						class="absolute w-4 h-4 text-xs text-center rounded-full bg-red-600 text-white top-0 right-0 snipcart-items-count"
+					></span>
+				</button>
+			</div>
+		</div>
+
+		<input type="checkbox" id="expandable-nav-side-input" name="" value="" />
+
+		<div
+			id="expandable-nav-side"
+			class="flex items-center fixed md:block md:static bg-white top-[50px] z-50 bottom-0 left-0 right-0"
+		>
+			<ul
+				class="w-full md:flex flex-wrap items-center justify-between px-4 md:px-0"
+			>
+				{
+					main.map(({ url, copy }) => (
+						<li class="text-[17px] leading-none pb-4">
+							<a
+								class:list={[
+									"w-full block text-center md:text-left md:w-auto text-c-green-400 md:uppercase pt-4 pb-1 hover:text-black transition md:font-semibold tracking-wide border-b-2 border-white hover:border-c-pink-500",
+									{ "border-c-pink-500 ": url == currentUrl },
+								]}
+								href={url}
+								title={copy}
+							>
+								{copy}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</div>
 </header>
