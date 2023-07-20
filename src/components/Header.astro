@@ -90,7 +90,7 @@ const currentUrl = new URL(Astro.request.url).pathname;
 							<a
 								class:list={[
 									"w-full block text-center md:text-left md:w-auto text-c-green-400 md:uppercase pt-4 pb-1 hover:text-black transition md:font-semibold tracking-wide border-b-2 border-white hover:border-c-pink-500",
-									{ "border-c-pink-500 ": url == currentUrl },
+									{ "border-c-pink-500 active": url == currentUrl },
 								]}
 								href={url}
 								title={copy}
