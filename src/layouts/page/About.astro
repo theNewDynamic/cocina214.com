@@ -12,7 +12,7 @@ const rest = persons && persons.length > 2 && persons.slice(2)
   {hero && hero.images && (
     <Slider images={hero.images}/>
   )}
-  <div class="max-w-[83rem] mx-auto px-4 md:px-8">
+  <div class="max-w-6xl mx-auto px-4 md:px-8 pb-32">
     {body && (
     <article class="py-4 md:py-8 flex">
       <div class="min-w-[50%] mx-auto text-lg prose font-serif no-underline text-gray-700">
@@ -28,12 +28,14 @@ const rest = persons && persons.length > 2 && persons.slice(2)
     </article>
     )}
     {rest && (
-      <Title theme="underline">Staff</Title>
-      <section class="my-8 gap-3 grid sm:grid-cols-2 md:grid-cols-5">
+      <div class="theme-green-dark">
+        <Title theme="underline" classes="text-c-green-400">Staff</Title>
+          <section class="my-8 gap-3 grid sm:grid-cols-2 md:grid-cols-5">
         {rest.map( entry => (
           <Li {entry} />
         ))}
       </section>
+      </div>
     )}
   </div>
 </Base>
