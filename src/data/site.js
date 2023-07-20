@@ -4,7 +4,7 @@
 const { title, description, image } = {
   title: `Cocina 214`,
   description: "Cocina 214 is a contemporary Mexican and Tex-Mex kitchen. Our menu combines bold flavors with the freshest local ingredients to create exceptional Tex-Mex – all served in a vibrant, elegant setting.",
-  image: null,
+  image: '/images/Cocina-214-8-3.jpg',
 }
 
 export default {
