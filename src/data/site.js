@@ -5,6 +5,7 @@ const { title, description, image } = {
   title: `Cocina 214`,
   description: "Cocina 214 is a contemporary Mexican and Tex-Mex kitchen. Our menu combines bold flavors with the freshest local ingredients to create exceptional Tex-Mex – all served in a vibrant, elegant setting.",
   image: '/images/Cocina-214-8-3.jpg',
+
 }
 
 export default {
@@ -16,6 +17,7 @@ export default {
   env: import.meta.env.ASTRO_ENV ? import.meta.env.ASTRO_ENV : "dev",
   // JSON LD
   site_id: `cocina214`,
+  repo: 'cocina214.com',
   seo: {
     default_image: "/uploads/social-400x400.png",
     site_name: title,
