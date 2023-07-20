@@ -4,27 +4,15 @@ import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './schemas'
-import DocumentsPane from 'sanity-plugin-documents-pane'
 import { media } from 'sanity-plugin-media'
 import initialValue from './schemas/templates/initialValue'
-import { structure } from './desk/'
-
+import { dashboard } from './desk/dashboard'
+import { structure } from './desk/structure'
+import { defaultDocumentNode } from './desk/defaultDocumentNode'
 import { netlifyTool } from 'sanity-plugin-netlify'
 
-
-const defaultDocumentNodeResolver = (S) =>
-  S.document().views([
-    S.view.form(),
-    S.view
-      .component(DocumentsPane)
-      .options({
-        query: `*[!(_id in path("drafts.**")) && references($id)]`,
-        params: { id: `_id` },
-      })
-      .title('Incoming References'),
-  ])
-
 let sharedPlugins = [
+  dashboard,
   media(),
   netlifyTool(),
 ]
@@ -33,60 +21,57 @@ if (process.env.NODE_ENV == "development") {
   sharedPlugins.push(visionTool())
 }
 
-const productionUrl = async (prev, context) => {
-  const previewHash = "77ce18c3317165749f0dc37b42cb251f"
-  let domain = process.env.NODE_ENV == "development" ? "http://localhost:3000" : "https://www.cocina214.com"
-  // context includes the client an other details
-  const { document } = context
-  const included = [
-    "event",
-    "person",
-    'media',
-    "post",
-    "pageChairs",
-    "home",
-    "page",
-
-  ]
-  if (included.includes(document._type)) {
-    return `${domain}/preview/${previewHash}/${document._id}`
-  }
-
-  return prev
-}
-
 const base = {
-  projectId,
-  basePath: '/  ',
-  title: projectTitle,
-  sharedPlugins,
-  document: {
-    productionUrl
-  },
   schema: {
     types: schemaTypes,
-    templates: (prev) => [
+    templates: (prev: any) => [
       ...prev,
       ...initialValue
     ]
   },
 }
 
-export default defineConfig([
-  {
-    ...base,
-    theme,
-    name: 'default',
-    dataset: 'production',
-    basePath: '/main',
-    plugins: [
-      deskTool({
-        structure: structure,
-        defaultDocumentNode: defaultDocumentNodeResolver,
-      }),
-      ...base.sharedPlugins,
-    ]
-  }
-]
+const production = {
+  ...base,
+  title: projectTitle,
+  projectId,
+  theme,
+  name: 'default',
+  dataset,
+  basePath: '/main',
+  plugins: [
+    deskTool({
+      structure: structure,
+      defaultDocumentNode
+    }),
+    ...sharedPlugins,
+  ]
+}
+
+const staging = {
+  ...base,
+  title: projectTitle + ' Dev',
+  projectId,
+  theme,
+  name: 'staging',
+  dataset: 'production',
+  basePath: '/dev',
+  plugins: [
+    deskTool({
+      structure: structure,
+      defaultDocumentNode
+    }),
+    ...sharedPlugins,
+  ],
+}
+
+let workspace = [production]
+
+if (process.env.NODE_ENV == "development") {
+  workspace = [production, staging]
+}
+
+export default defineConfig(
+  workspace
 )
 
