@@ -5,7 +5,7 @@ export const main = [
     copy: "Home",
   },
   {
-    url: "/about",
+    url: "/about/",
     copy: "About",
   },
   {
@@ -17,15 +17,15 @@ export const main = [
     copy: "Dine"
   },
   {
-    url: "/news",
+    url: "/news/",
     copy: "News"
   },
   {
-    url: "/shop",
+    url: "/shop/",
     copy: "Order Online"
   },
   {
-    url: "/contact",
+    url: "/contact/",
     copy: "Contact"
   },
 ]
