@@ -27,7 +27,7 @@ const locations = await getLocations()
 }
 </style>
 <footer class="w-full py-8 bg-c-pink-500 text-white" role="contentinfo">
-  <div class="max-w-5xl px-4 mx-auto md:flex justify-between">
+  <div class="max-w-7xl px-4 mx-auto md:flex justify-between">
     {/* Address & Follow */}
     <div class="md:flex justify-end md:block md:order-1">
       <div>
@@ -57,13 +57,10 @@ const locations = await getLocations()
       <div>
         <img class="hidden md:block w-[6rem]" src="/images/footer_logo.svg" alt="" />
         <img class="md:hidden css-footer-logo" src="/images/logo_small.svg" alt="" />
-      </div>
-      <div class="text-white uppercase md:mt-6">
-        &copy;{getCurrentYear()}&nbsp;{site.title}
-      </div>
+      </div>      
     </div>
   </div>
+  <div class="text-white uppercase md:mt-6 max-w-7xl mx-auto text-xs">
+        &copy;{getCurrentYear()}&nbsp;{site.title} <div class="ml-8 inline-block"><SiteBy /></div>
+      </div>
 </footer>
-<div class="max-w-5xl px-4 mx-auto">
-  <SiteBy />
-</div>
