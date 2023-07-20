@@ -13,7 +13,9 @@ import Li from '@components/product/Li.astro';
     <div class="mb-8">
       <Title theme="underline" classes="mb-8">Order Online</Title>
       {body && (
-        <div class="font-serif"><Prose text={body} /></div>
+        <div class="font-serif prose lg:prose-lg">
+          <Prose text={body} />
+        </div>
       )}
       <div class="my-6 theme-green">
         <Button url="https://cocina214.alohaorderonline.com/" copy="Order Now" />
