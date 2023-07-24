@@ -1,7 +1,7 @@
 import { defineType, defineField } from 'sanity'
 import { personOrdering as orderings } from '../orderings'
 import { SlUserFemale as icon } from "react-icons/sl";
-import { image, description, slug } from '../fields';
+import { image,  slug } from '../fields';
 
 export default defineType({
   name: 'person',
@@ -20,10 +20,18 @@ export default defineType({
   fields: [
     {
       name: 'title',
-      title: 'Full Name',
+      title: 'Name',
       type: 'string',
     },
-    slug,
+    {
+      name: "job_title",
+      title: "Title",
+      type: "string",
+    },
+    {
+      ...slug,
+      hidden: true,
+    },
     {
       name: 'first_name',
       title: 'First Name',
@@ -44,17 +52,12 @@ export default defineType({
         { type: "string" }
       ],
     },
-    image,
-    {
-      name: "job_title",
-      title: "Title",
-      type: "string",
-    },
-    description,
+    image,    
     {
       name: 'body',
       title: "Body",
-      type: "blockContent"
+      type: "blockContent",
+      hidden: true,
     },
   ],
   initialValue: {

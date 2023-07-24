@@ -4,7 +4,7 @@ import { IoNewspaperOutline as icon } from 'react-icons/io5'
 
 export default defineStructure<ListItemBuilder>((S) =>
   S.listItem()
-    .title('Pages')
+    .title('Other Pages')
     .icon(icon)
     .child(
       S.documentTypeList('page')

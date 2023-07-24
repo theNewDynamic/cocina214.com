@@ -1,5 +1,5 @@
 import { defineType } from 'sanity'
-import { title, seo, slug, date, description, reference, links, image } from '../fields'
+import { title, seo, slug, reference, links, image } from '../fields'
 import { defaultOrdering as orderings } from '../orderings'
 import { IoDocumentTextOutline as icon } from 'react-icons/io5'
 
@@ -26,9 +26,7 @@ export default defineType({
 
   fields: [
     title,
-    slug,
-    date,
-    description,
+    slug,        
     {
       type: "array",
       name: "images",

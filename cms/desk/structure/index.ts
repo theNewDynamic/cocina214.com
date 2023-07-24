@@ -34,18 +34,17 @@ export const structure: StructureResolver = (S, context) =>
     .title('Content')
     .items([
       home(S, context),
-      S.divider(),
-      pages(S, context),
-      S.divider(),
+      notices(S, context),
       posts(S, context),
-      S.divider(),
-      shop(S, context),
       S.divider(),
       about(S, context),
       persons(S, context),
-      notices(S, context),
       locations(S, context),
-      settings(S, context),
+      pages(S, context),
+      S.divider(),
+      shop(S, context),
+      S.divider(),
+      // settings(S, context),
       // Unhide the documentTypeListItems to configure desk
       //...S.documentTypeListItems().filter(hiddenDocTypes),
 

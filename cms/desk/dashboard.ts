@@ -23,11 +23,6 @@ export const dashboard =  dashboardTool({
       limit: 5,
       createButtonText: 'Create new Blog Post',
       showCreateButton: true
-    }),
-    documentListWidget({
-      layout: { width: "small" },
-      title: 'Future Dated Books',
-      query: '*[_type == "book" && publishedAt > now()]'
-    }),
+    }),    
   ]
 })
