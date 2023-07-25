@@ -13,9 +13,9 @@ export const previewSecretId: `${string}.${string}` = 'preview.secret'
 
 
 export const includePreview = [
-  "event",
-  "person",
+  "event",  
   'media',
+  'pageAbout',
   "post",
   "pageChairs",
   "home",

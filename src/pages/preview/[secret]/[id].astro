@@ -1,7 +1,8 @@
 ---
 import Single from '@layouts/Single.astro'
+import LayoutPage from '@layouts/page/Single.astro'
 import LayoutEvent from '@layouts/event/Single.astro'
-import LayoutPost from '@layouts/Single.astro'
+import LayoutPost from '@layouts/post/Single.astro'
 import LayoutAbout from '@layouts/page/About.astro'
 import LayoutPerson from '@layouts/person/Single.astro'
 import Home from '@layouts/Home.astro'
@@ -30,7 +31,13 @@ let { type, title, associations } = entry
 let Layout = Single
 // Other content types' layouts are determined below.
 switch (type) {
-  case "event":
+  case "post":
+    Layout = LayoutPost 
+    break;  
+  case "page":
+    Layout = LayoutPage 
+    break;  
+    case "event":
     Layout = LayoutEvent
     break;
   case "person":
@@ -40,7 +47,7 @@ switch (type) {
     Layout = Home
     break;
   case "pageAbout":
-    Layout = About
+    Layout = LayoutAbout
     break;
   default:
     break;

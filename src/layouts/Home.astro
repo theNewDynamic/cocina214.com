@@ -1,21 +1,19 @@
 ---
+const { entry, entry: { title, url, blocks, hero, home = false} } = Astro.props
 import Base from '@layouts/Base.astro'
-import Blocks from '@components/post/Li.astro'
-import Prose from '@components/Prose.astro'
-const {entry, entry: { title, description, blocks } } = Astro.props
+import Blocks from '@components/Blocks.astro';
+import Slider from '@components/Slider.astro';
+import Intro from '@components/home/Intro.astro';
+
 ---
-<Base {entry}>
-  {description && (
-  <div class="shadow-4 w-90 w-50-m w-33-l tc relative z-20">  
-    <p class="fw3 f4  mw6 lh-copy mt2 mb2 bold tc" style="margin:auto;">
-      <Prose text={description} />
-    </p>    
-  </div>
+<Base {entry} >
+  {hero && hero.images && (
+    <Slider images={hero.images}/>
   )}
-  {blocks && (
-  <div class="max-w-5xl py-4 px-6 lg:px-16 2xl:px-0 mx-auto lg:pt-12 lg:pb-32 tk">
+  
+    <Intro {entry} />
+  
+  <div class="w-full px-4 pb-32">
     <Blocks {blocks} />
   </div>
-  )}
-
 </Base>
