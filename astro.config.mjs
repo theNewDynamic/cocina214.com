@@ -5,10 +5,7 @@ import netlify from "@astrojs/netlify/functions";
 export default defineConfig({
   site: 'https://www.cocina214.com',
   output: "hybrid",
-  compressHTML: true,
-  experimental: {
-    hybridOutput: true,
-  },
+  compressHTML: true,  
   adapter: netlify(),
   integrations: [
     tailwind({
