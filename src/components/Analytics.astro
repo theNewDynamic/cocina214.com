@@ -7,7 +7,7 @@ const { ga_id } = site
 {site.prod() && (
   <>
     {!!site.ga_id && (
-      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-25985636-2"></script>
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${site.ga_id}`}></script>
       <script is:inline define:vars={{ga_id}}>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -19,7 +19,7 @@ const { ga_id } = site
     )}
     {!!site.gtm_id && (
       <>
-      <script is:inline define:vars={{ gtm_id }}>
+      <script is:inline define:vars={{ gtm_id: site.gtm_id }}>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
