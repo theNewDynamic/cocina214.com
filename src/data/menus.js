@@ -13,8 +13,8 @@ export const main = [
     copy: "Loyalty"
   },
   {
-    url: "/dine/",
-    copy: "Dine"
+    url: "/menus/",
+    copy: "Menus"
   },
   {
     url: "/news/",
