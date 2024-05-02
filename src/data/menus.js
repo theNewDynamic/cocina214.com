@@ -8,10 +8,7 @@ export const main = [
     url: "/about/",
     copy: "About",
   },
-  {
-    url: "/loyalty/",
-    copy: "Loyalty"
-  },
+
   {
     url: "/menus/",
     copy: "Menus"
