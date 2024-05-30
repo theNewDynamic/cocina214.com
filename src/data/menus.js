@@ -16,11 +16,7 @@ export const main = [
   {
     url: "/news/",
     copy: "News"
-  },
-  {
-    url: "/shop/",
-    copy: "Order Online"
-  },
+  },  
   {
     url: "/contact/",
     copy: "Contact"
