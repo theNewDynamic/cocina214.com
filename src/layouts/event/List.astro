@@ -1,10 +1,12 @@
 ---
 import Base from '@layouts/Base.astro'
 import PastUpcoming from '@components/event/PastUpcoming.astro'
-const {entry, entry: { events } } = Astro.props
+import { getFuture, getPast } from '@util/events'
+import { events } from '@data/collections'
+const {entry } = Astro.props
 ---
 <Base {entry}>
   <div class="w-100 w-30-l">
-    <PastUpcoming future={events.future} past={events.past} />
+    <PastUpcoming future={getFuture(events)} past={getPast(events)} />
   </div>
 </Base>

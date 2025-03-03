@@ -1,5 +1,7 @@
 import groq from "groq";
+import BASE from "./BASE";
 export default groq`{
+  ...${BASE},
   title,
   address_1,
   city,

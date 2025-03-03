@@ -1,10 +1,9 @@
 ---
-import { getPosts } from "@data/sanity/api"
+import { posts } from "@data/collections"
 import { url_mapping } from "@data/site"
 import Layout from '@layouts/post/List.astro'
 
 export async function getStaticPaths({ paginate }) {
-  const posts = await getPosts()
   return paginate(posts, {
     params: {
       post: url_mapping.post || 'post',

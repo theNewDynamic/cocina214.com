@@ -80,15 +80,13 @@ export async function getLocations() {
 }
 
 export async function getEvents() {
-
-  const query = groq`{
-    'future': *[!(_id in path('drafts.**')) && _type == "event" && time_start >= now()] |order(time_start desc)${EVENT},
-    'past': *[!(_id in path('drafts.**')) && _type == "event"  && time_start < now()] |order(time_start desc)${EVENT},
-  }`
-  const entries = await sanityFetch({query, hash: 'getEvents', forceCache: true});
+  const query = groq`*[
+      !(_id in path('drafts.**'))
+      && _type == "event"
+    ] | order(time_start desc)${EVENT}`
+  const entries = await sanityFetch({query});
   return entries
 }
-
 export async function getStaffMembers() {
 
   const query = groq`*[
@@ -112,6 +110,7 @@ export async function getHome() {
 export async function getSingletons() {
   const params = {
     types: [
+      'home',
       'pageAbout',
       'pageShop'
     ]

@@ -31,15 +31,6 @@ export const mailchimp = {
   audience_id: '73xxxx74'
 }
 
-// The Sanity information
-export const sanity = {
-    projectId: 'd8r8fz1h',
-    dataset: 'production',
-    apiVersion: '2022-12-14',
-    useCdn: false,
-    token: import.meta.env.SANITY_TOKEN ? import.meta.env.SANITY_TOKEN : false
-}
-
 export const socials = [
   {
     name: 'facebook',

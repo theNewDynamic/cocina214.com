@@ -1,11 +1,11 @@
 ---
 const version = "3.0"
-const api_key = import.meta.env.PUBLIC_SNIPCART_API_KEY
+import { PUBLIC_SNIPCART_API_KEY } from "astro:env/client"
 ---
 
 <script is:inline define:vars={{
   version,
-  api_key
+  api_key: PUBLIC_SNIPCART_API_KEY,
 }}>
   window.SnipcartSettings = {
     publicApiKey: api_key,

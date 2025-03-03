@@ -1,9 +1,9 @@
 ---
-import { getStaffMembers } from "@data/sanity/api"
+import { persons } from "@data/collections"
 import Layout from '@layouts/Single.astro'
 
 export async function getStaticPaths() {
-  const entries = await getStaffMembers()
+  const entries = persons
 
   return entries.map(entry => {
     const slug = entry.slug
