@@ -1,7 +1,5 @@
 [build]
   command = "npx astro build --site $URL"
-[build.environment]
-  NODE_VERSION = "16.16.0"
 [functions]
   directory = "functions"
   external_node_modules = ["svgo", "@11ty/eleventy-fetch"]
