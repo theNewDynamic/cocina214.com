@@ -8,7 +8,7 @@ const { title, description, image } = {
 
 }
 
-export default {
+const config = {
   title,
   description,
   image,
@@ -25,6 +25,9 @@ export default {
   },
   prod: () => process.env.ASTRO_ENV == 'production'
 }
+
+export default config
+
 // If using mailchimp, those are default values for forms.
 export const mailchimp = {
   user_id: '55b3xxxxxxxxxxxxxx2d3d2',
@@ -53,4 +56,10 @@ export const socials = [
 export const url_mapping = {
    // Add mapping below if the type does not match the destination directory
   'post': 'news',
+}
+
+export async function getSettings(){
+  return {
+    ...config,
+  }
 }

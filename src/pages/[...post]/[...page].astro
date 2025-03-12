@@ -18,7 +18,7 @@ export async function getStaticPaths({ paginate }) {
   })
 }
 
-const { page, title } = Astro.props
+const { page, entry: { title} } = Astro.props
 const entry = {
   title,
   entries: page.data,
