@@ -1,6 +1,5 @@
 ---
 import Header from "@components/Header.astro";
-import SnipcartTags from "@util/snipcart/Tags.astro";
 import { SEO } from "astro-seo";
 import Analytics from "@components/Analytics.astro";
 import Footer from "@components/Footer.astro";
@@ -8,6 +7,7 @@ import "/src/styles/main.css";
 import "/src/styles/fonts.css";
 import "/src/styles/theme_blocks.css";
 import "/src/styles/transitions.css";
+import '@fontsource-variable/lora/wght-italic.css';
 import { getMetasData, getStructuredData } from "@util/seo";
 const { entry, section = "default" } = Astro.props;
 let mainClasses = "bg-white max-w-[2000px] mx-auto"
@@ -35,12 +35,8 @@ const structuredData = getStructuredData(entry)
 		<meta name="msapplication-TileColor" content="#2d89ef" />
 		<meta name="theme-color" content="#ffffff" />
 		<meta name="tech" content="upgraded" />
-		<style is:global>
-			@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
-		</style>
 		<SEO {...SEOData} />
 		<Analytics />
-		<SnipcartTags />
 		<script>
 			import Alpine from "alpinejs";
 			import intersect from '@alpinejs/intersect'

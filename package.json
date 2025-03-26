@@ -15,6 +15,7 @@
     "@alpinejs/intersect": "^3.12.3",
     "@astrojs/netlify": "^6.2.2",
     "@astrojs/tailwind": "^6.0.0",
+    "@fontsource-variable/lora": "^5.2.5",
     "@sanity/client": "^6.1.2",
     "@sanity/image-url": "^1.0.2",
     "@tailwindcss/typography": "^0.5.9",
