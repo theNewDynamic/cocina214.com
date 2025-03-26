@@ -16,7 +16,7 @@ module.exports = {
     "sans-serif",
   ],
   serif: [
-    "Lora Variable",
+    //"Lora Variable",
     "Lucida Bright",
     "Lucidabright",
     "Lucida Serif",
