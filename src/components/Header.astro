@@ -13,12 +13,6 @@ const currentUrl = new URL(Astro.request.url).pathname;
 		color: currentColor;
 		fill: currentColor;
 	}
-	[astro-icon="cart"] {
-		width: 2rem;
-		height: 2rem;
-		color: currentColor;
-		fill: currentColor;
-	}
 </style>
 <style is:global>
 	input[type="checkbox"]#expandable-nav-side-input {
@@ -65,12 +59,6 @@ const currentUrl = new URL(Astro.request.url).pathname;
 						<span class="block hamburger-inner"></span>
 					</span>
 				</label>
-				<button class="ml-4 relative snipcart-checkout">
-					<Icon name="cart" />
-					<span
-						class="absolute w-4 h-4 text-xs text-center rounded-full bg-red-600 text-white top-0 right-0 snipcart-items-count"
-					></span>
-				</button>
 			</div>
 		</div>
 
