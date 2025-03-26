@@ -1,12 +1,9 @@
 ---
 import { getCurrentYear } from '@util/helpers'
-import { getLocations } from '@data/sanity/api'
-import { main, secondary, legal} from '@data/menus'
 import site from '@data/site'
 import Follow from '@components/socials/Follow.astro'
 import SiteBy from '@components/SiteBy.astro'
-const currentPath = Astro.url.pathname;
-const locations = await getLocations()
+import { locations } from '@data/collections'
 ---
 <style>
   .css-footer-logo {
@@ -57,7 +54,7 @@ const locations = await getLocations()
       <div>
         <img class="hidden md:block w-[6rem]" src="/images/footer_logo.svg" alt="" />
         <img class="md:hidden css-footer-logo" src="/images/logo_small.svg" alt="" />
-      </div>      
+      </div>
     </div>
   </div>
   <div class="text-white px-4 uppercase md:mt-6 max-w-7xl mx-auto text-xs">

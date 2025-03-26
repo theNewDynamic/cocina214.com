@@ -8,7 +8,7 @@ const { entry, entry: { body, image} } = Astro.props
   <div class="md:flex justify-between">
     {image && (
       <div class="w-full md:w-[55%]">
-        <Image {image} params={{width: 800}} />  
+        <Image {image} width="800" />
       </div>
     )}
     {body && (

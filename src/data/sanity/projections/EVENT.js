@@ -1,7 +1,9 @@
 import groq from "groq";
 import URL from "./URL";
 import PORTABLE_TEXT_BLOCK from "./PORTABLE_TEXT_BLOCK";
+import BASE from "./BASE";
 export default groq`{
+  ...${BASE},
   title,
   'type': _type,
   time_start,
@@ -16,5 +18,8 @@ export default groq`{
   related->{
     title,
     ...${URL},
-  }
+  },
+  time_start >= now() => {
+    'future': true,
+  },
 }`

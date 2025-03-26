@@ -1,9 +1,9 @@
 ---
-import { getProducts } from "@data/sanity/api"
 import Layout from '@layouts/product/Single.astro'
 import { url_mapping } from '@data/site'
+import { products } from "@data/collections"
 export async function getStaticPaths() {
-  const entries = await getProducts()
+  const entries = products
   return entries.map(entry => {
     const slug = entry.slug
     return {

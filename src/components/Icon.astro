@@ -1,0 +1,13 @@
+---
+const icons = await import.meta.glob('@icons/*.svg', { eager: true });
+const { name, classes, ...rest } = Astro.props
+const foundIcon = icons[`/src/icons/${name}.svg`] || icons[`/src/icons/default.svg`]
+
+const IconOutput = foundIcon.default
+const attributes = {
+  ...rest,
+  class: classes,
+}
+
+---
+<IconOutput astro-icon={name} {...attributes} />

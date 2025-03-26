@@ -8,7 +8,7 @@ const { title, description, image } = {
 
 }
 
-export default {
+const config = {
   title,
   description,
   image,
@@ -25,19 +25,13 @@ export default {
   },
   prod: () => process.env.ASTRO_ENV == 'production'
 }
+
+export default config
+
 // If using mailchimp, those are default values for forms.
 export const mailchimp = {
   user_id: '55b3xxxxxxxxxxxxxx2d3d2',
   audience_id: '73xxxx74'
-}
-
-// The Sanity information
-export const sanity = {
-    projectId: 'd8r8fz1h',
-    dataset: 'production',
-    apiVersion: '2022-12-14',
-    useCdn: false,
-    token: import.meta.env.SANITY_TOKEN ? import.meta.env.SANITY_TOKEN : false
 }
 
 export const socials = [
@@ -62,4 +56,10 @@ export const socials = [
 export const url_mapping = {
    // Add mapping below if the type does not match the destination directory
   'post': 'news',
+}
+
+export async function getSettings(){
+  return {
+    ...config,
+  }
 }

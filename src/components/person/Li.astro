@@ -6,7 +6,7 @@ const { entry, entry: { title, full_name, image, job_title } } = Astro.props
 
 <div>
   {image && (
-    <Image {image} params={{width: 400}} classes="img mb-2 mr-2" />
+    <Image {image} width="400" classes="img mb-2 mr-2" />
   )}
   {full_name && (
     <Title theme="small">{full_name}</Title>

@@ -5,7 +5,7 @@ import Prose from '@components/Prose.astro';
 import Wrapper from '@components/blocks/section/Wrapper.astro';
 import { getImageURL } from '@util/sanity/image';
 const { block, block: { title, theme, image, entries } } = Astro.props
-const bgImage = image && getImageURL(image) 
+const bgImage = image && getImageURL(image)
 
 ---
 <Wrapper {theme}>
@@ -13,7 +13,7 @@ const bgImage = image && getImageURL(image)
     <div class="bg-cover bg-center half-1" style={{
       backgroundImage: `url(${bgImage})`,
     }}>
-      <Image {image} classes="md:hidden w-full" alt={`image from ${title}`} params={{width: 800}} />
+      <Image {image} classes="md:hidden w-full" alt={`image from ${title}`} width="800" />
     </div>
   )}
   <div class="py-8 half-2">
@@ -24,9 +24,9 @@ const bgImage = image && getImageURL(image)
         </Title>
       </div>
       <div class="text-currentTheme font-serif p-8">
-        {entries && (          
+        {entries && (
           <div class="grid gap-8 md:grid-cols-2">
-            {entries.map(({title, url, links, description})=> (              
+            {entries.map(({title, url, links, description})=> (
               <div>
                 <h3 class="font-bold text-xl mb-2">
                   {title}
@@ -34,27 +34,27 @@ const bgImage = image && getImageURL(image)
                 <div class="prose prose-sm font-sans text-currentTheme">
                   <Prose text={description} />
                 </div>
-                
+
                 {links && (
                   <div>
-                    {links.map(({copy, url, file})=>                    
-                      (file || url) && 
-                      <a href={file ? file : url} target="_blank" class="font-brand block py-2 tracking-wide hover:underline hover:opacity-80 transition">{copy} &raquo;                      
-                      </a>                                          
+                    {links.map(({copy, url, file})=>
+                      (file || url) &&
+                      <a href={file ? file : url} target="_blank" class="font-brand block py-2 tracking-wide hover:underline hover:opacity-80 transition">{copy} &raquo;
+                      </a>
                     )}
                   </div>
                   )}
-                {!links &&                
+                {!links &&
                   url &&
                     <a href={url} class="font-brand block py-4 tracking-wide hover:underline hover:opacity-80 transition">
                     Learn More &raquo;
-                  </a>                  
-                }                               
+                  </a>
+                }
               </div>
             ))}
           </div>
         )}
-      </div>  
+      </div>
     </div>
   </div>
 </Wrapper>

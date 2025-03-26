@@ -4,16 +4,15 @@ import SnipcartTags from "@util/snipcart/Tags.astro";
 import { SEO } from "astro-seo";
 import Analytics from "@components/Analytics.astro";
 import Footer from "@components/Footer.astro";
-import { getSEOData } from "@util/seo.js";
 import "/src/styles/main.css";
 import "/src/styles/fonts.css";
 import "/src/styles/theme_blocks.css";
 import "/src/styles/transitions.css";
+import { getMetasData, getStructuredData } from "@util/seo";
 const { entry, section = "default" } = Astro.props;
 let mainClasses = "bg-white max-w-[2000px] mx-auto"
-let SEOData = getSEOData({
-	...entry,
-});
+const SEOData = getMetasData(entry);
+const structuredData = getStructuredData(entry)
 ---
 
 <!DOCTYPE html>

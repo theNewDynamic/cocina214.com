@@ -1,15 +1,97 @@
 ---
-import { getImageURL } from '@util/sanity/image';
-const { lazyload = true, classes = false, alt, params = { width: 400 } } = Astro.props
-let { image } = Astro.props
+import { getImage } from '@util/images';
+
+interface Props {
+  /**
+   * The image object returned by sanity, or an image src (string)
+   */
+  image: object|string;
+  /**
+   * The width of the image
+   * @default 600
+   */
+  width?: number|string;
+  /**
+   * The height of the image
+   */
+  height?: number|string;
+  /**
+   * The widths to be rendered as multiple srcset. Heights is infered from aspect ratio.
+   */
+  widths?: number[]
+  /**
+   * The heights. If set the component matches each width with a corresponding height based on their index in the array.
+   */
+  heights?: number[]
+  /**
+   * The various media queries to populate the `sizes` attribute.
+   * @example "(max-width: 500px) 400px, (max-width: 700px) 700px, 1000px"
+   */
+  sizes?: string
+  /**
+   * The alt text of the image
+   * @default ""
+   */
+  alt?: string;
+  /**
+   * Lazyload wil determine the loading strategy as well.
+   * @default true
+   */
+  lazyload?: boolean;
+  params?: { [key: string]: any }; // Modified to enforce both keys and values as strings
+  class?: string[];
+  // Will be retired.
+  classes?: string|string[];
+}
+
+const { lazyload = true, alt: altText, image, width: widthParam, height: heightParam, widths = [], heights = [], params = {}, classes, 'class': classListInput, ...rest } = Astro.props
+
+// Supporting the old classes prop, but will retire.
+const classesInput = typeof classes == "string" ? [classes] : classes
 const loadingStrategy = lazyload ? "lazy" : "eager"
 const fetchPriority = lazyload ? "auto" : "high"
-let { width } = params
-let height = false
-if(image && typeof image != "string") {
-  image = getImageURL(image, params)
-  height = height || Math.round(width / image.aspectRatio)
+
+// We infer the parameters with the width param.
+// Note here that width and height shouldn't be set as part of `params` but as the width or width props.
+if(import.meta.env.DEV || true) {
+  for (const property of ['width', 'height']) {
+    if(params[property]){
+      console.log(`  📟 <Image />: ${property} should be passed as \`${property}\` or \`${property}s\``)
+    }
+  }
 }
+let paramsInfer = {
+  widths:  widthParam && !widths.length ? [widthParam] : widths.length && widths[0] ? widths : params.width ? [params.width] : [600],
+  heights: heightParam && !heights.length ? [heightParam] : heights.length && heights[0] ? heights : params.height ? [params.height] : [],
+  ...params,
+}
+paramsInfer = {
+  ...paramsInfer,
+  widths: paramsInfer.widths.map(w => parseInt(w)),
+  heights: paramsInfer.heights.map(h => parseInt(h)),
+}
+const imageData = await getImage({image, ...paramsInfer})
+
+// We should always use an alt, if omitted, we use `""`
+const alt = altText || image.altText || ""
+
+const imageProps = {
+  ...imageData,
+  alt,
+  fetchPriority,
+  loading: loadingStrategy,
+
+}
+const classList = [
+  classListInput,
+  classesInput,
+]
 ---
 
-<img width={width} fetchpriority={fetchPriority} loading={loadingStrategy} {height} {alt} class={classes} src={image} />
+{Astro.slots.has('caption') ?
+  <figure class:list={classList} {...rest}>
+    <img {...imageProps} />
+    <slot name="caption" />
+  </figure> :
+  <img class:list={classList} {...imageProps} {...rest} />
+}
