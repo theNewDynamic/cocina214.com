@@ -1,0 +1,26 @@
+---
+import Field from "../Field.astro"
+import prepareField from "../../util/prepareField"
+const {field, field: { fields: groupFields, columns = 1, attributes }, ...rest } = Astro.props
+const fields = groupFields && groupFields.length && groupFields.map(groupField => prepareField(groupField, field.form ))
+---
+<style>
+  [data-cols]{
+    display: grid;
+    gap: 1rem;
+  }
+
+  [data-cols="2"] {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  [data-cols="3"] {
+    grid-template-columns: repeat(3, 1fr);
+  }
+</style>
+{fields && fields.length && (
+  <div data-cols={columns} {...attributes}>
+    {fields.map(groupField => (
+      <Field field={groupField} {...rest} />
+    ))}
+  </div>
+)}

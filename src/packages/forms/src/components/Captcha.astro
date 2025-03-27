@@ -1,0 +1,13 @@
+---
+const { service, captcha } = Astro.props
+---
+
+{service == 'netlify' && (
+  <>
+  {captcha ? (<div data-netlify-recaptcha="true"></div>) : (
+  <p style="visibility:hidden; display:none;">
+    <label>Don’t fill this out if you're human: <input name="desired_choice_for_now" /></label>
+  </p>
+  )}
+  </>
+)}

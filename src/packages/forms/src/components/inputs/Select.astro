@@ -1,0 +1,8 @@
+---
+const { classes = [], field: { type, name, id, options, required, attributes, value: fieldValue }, ...rest } = Astro.props
+---
+<select {name} {id} class:list={classes} {name} {required} {...attributes} {...rest}>
+  {options && options.length && options.map(({value, title}) => (
+    <option {value} selected={fieldValue && fieldValue == value}>{title}</option>
+  ))}
+</select>

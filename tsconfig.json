@@ -21,6 +21,9 @@
       "@icons/*": [
         "src/icons/*"
       ],
+      "@forms/*": [
+        "src/packages/forms/src/*",
+      ]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "preact"

@@ -1,0 +1,15 @@
+---
+const { type, classes = [], ...rest } = Astro.props
+let Tag = 'div'
+if(['radios', 'checkboxes', 'group'].includes(type)) {
+  Tag = 'fieldset'
+}
+---
+<Tag class:list={[
+  ...classes,
+  "wrapper"
+]} {...rest}>
+  <slot name="label" />
+  <slot name="input" />
+  <slot name="hint" />
+</Tag>

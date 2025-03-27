@@ -1,0 +1,31 @@
+---
+import Input from "./Input.astro";
+const { classes = [], field: { name, value: fieldValue, options } } = Astro.props
+---
+<style>
+  .wrapper{
+    margin: .5rem 0;
+  }
+  .entry{
+    display: flex;
+    align-items: center;
+    margin: .25rem 0;
+  }
+  label{
+    margin-left: .5rem;
+  }
+</style>
+<div class:list={[...classes, "wrapper"]}>
+  {options && options.map(({value, title, id})=> (
+  <div class="entry">
+    <Input field={{
+      name,
+      id,
+      type: "checkbox",
+      value,
+      checked: fieldValue && fieldValue == value
+     }} />
+     <label for={id}>{title}</label>
+  </div>
+))}
+</div>

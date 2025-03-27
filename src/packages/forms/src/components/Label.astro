@@ -1,0 +1,31 @@
+---
+const { field, field: { name, id = name, label, type = "text", required, form }, ...rest } = Astro.props
+let { classes = [] } = Astro.props
+classes = [
+  ...classes,
+  {"required": required}
+]
+const { service } = form
+const labelHack = service == 'netlify' && ['checkboxes', 'radios'].includes(type)
+// Netlify is pretty bad when it comes to identifying the label of a fieldset of multiple choices (checkbox, radio etc...)
+// It simply picks the first label in the list. Printing this in UI (email or submissions)
+// {label of first checkbox}: [{checked label 1}, {checked label 2}]
+// This will trick it by inserting a hidden label and input as the first element.
+// https://answers.netlify.com/t/checkboxes-and-radio-buttons-in-forms/1486/20
+---
+{["checkboxes", "radios", "group"].includes(type) && label ? (
+  <>
+  <legend class:list={[
+    ...classes,
+    "label",
+
+  ]}
+  >{label}</legend>
+  {labelHack &&
+    <label data-labelhack="true" aria-hidden="true" for={id} {...rest}>{label}<input type="checkbox" {id} name={id + '[]'} value="" class="hidden"></label>}
+  </>
+  ) :
+  <label class:list={classes} for={id} {...rest} >
+    {label}
+  </label>
+}

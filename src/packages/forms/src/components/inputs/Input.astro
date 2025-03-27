@@ -1,0 +1,4 @@
+---
+const { classes = [], field: { type, name, id, value, placeholder, checked, required, attributes = {} }, ...rest } = Astro.props
+---
+<input class:list={classes} {type} {id} {name} {placeholder} {required} {...attributes} {value} {checked} {...rest} />

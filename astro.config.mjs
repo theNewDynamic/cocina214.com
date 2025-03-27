@@ -1,6 +1,7 @@
 import { defineConfig, envField } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import netlify from "@astrojs/netlify";
+import tndForms from "./src/packages/forms"
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.cocina214.com',
@@ -41,6 +42,9 @@ export default defineConfig({
     }
   },
   integrations: [
+    tndForms({
+      //submitCopy: 'Get in touch',
+    }),
     tailwind({
       configFile: './src/styles/config/tailwind.config.cjs',
       applyBaseStyles: true

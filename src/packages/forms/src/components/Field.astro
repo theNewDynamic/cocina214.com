@@ -1,0 +1,14 @@
+---
+const { field, field: { components, type, hint, label, form, classList }, ...rest } = Astro.props
+---
+{!["hidden"].includes(type) ? (
+  <components.wrapper {type} classes={classList.wrapper} {...rest} >
+    {label && (
+      <components.label slot="label" {field} classes={classList.label} {...rest} />
+    )}
+    <components.input slot="input" {field} classes={classList.input} {...rest} />
+    {hint && <small slot="hint">{hint}</small>}
+  </components.wrapper>
+) : (
+  <components.input {field} />
+)}
