@@ -9,7 +9,7 @@ export default defineStructure<ListItemBuilder>((S) =>
     .child(
       S.documentTypeList('page')
         .showIcons(false)
-        .defaultOrdering([{ field: 'publishedAt', direction: 'desc' }])
+        .defaultOrdering([{ field: 'title', direction: 'asc' }])
     ),
 )
 

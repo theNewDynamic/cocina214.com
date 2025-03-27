@@ -9,12 +9,10 @@ import initialValue from './schemas/templates/initialValue'
 import { dashboard } from './desk/dashboard'
 import { structure } from './desk/structure'
 import { defaultDocumentNode } from './desk/defaultDocumentNode'
-import { netlifyTool } from 'sanity-plugin-netlify'
 
 let sharedPlugins = [
   dashboard,
   media(),
-  netlifyTool(),
 ]
 
 if (process.env.NODE_ENV == "development") {

@@ -22,7 +22,7 @@ export default defineStructure<ListItemBuilder>((S) =>
             .child(
               S.documentTypeList('product')
                 .showIcons(false)
-                .defaultOrdering([{ field: 'publishedAt', direction: 'desc' }])
+                .defaultOrdering([{ field: 'title', direction: 'asc' }])
             ),
           S.listItem()
             .title('Categories')
