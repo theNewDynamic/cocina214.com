@@ -42,8 +42,8 @@ export const structure: StructureResolver = (S, context) =>
       locations(S, context),
       pages(S, context),
       S.divider(),
-      shop(S, context),
-      S.divider(),
+      //shop(S, context),
+      //S.divider(),
       // settings(S, context),
       // Unhide the documentTypeListItems to configure desk
       //...S.documentTypeListItems().filter(hiddenDocTypes),
