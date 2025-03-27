@@ -1,5 +1,4 @@
 import { projectId, dataset, projectTitle } from './lib/sanity.api'
-import { theme } from 'https://themer.sanity.build/api/hues?primary=68b3f0'
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { visionTool } from '@sanity/vision'
@@ -33,7 +32,6 @@ const production = {
   ...base,
   title: projectTitle,
   projectId,
-  theme,
   name: 'default',
   dataset,
   basePath: '/main',
@@ -50,7 +48,6 @@ const staging = {
   ...base,
   title: projectTitle + ' Dev',
   projectId,
-  theme,
   name: 'staging',
   dataset: 'production',
   basePath: '/dev',
