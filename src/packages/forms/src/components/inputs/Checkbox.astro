@@ -1,0 +1,12 @@
+---
+import Input from "./Input.astro";
+const { field, field: { type, name, id, value, attributes }, ...rest } = Astro.props
+---
+
+<Input field={{
+  name,
+  id,
+  type: "checkbox",
+  value,
+  ...attributes,
+ }} {...rest} />

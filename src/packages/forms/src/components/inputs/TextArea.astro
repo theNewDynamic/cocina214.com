@@ -1,0 +1,13 @@
+---
+const { field, classes = [], field: { name, id, cols, rows, value }, ...rest } = Astro.props
+---
+<style>
+  textarea{
+    display: block;
+    width: 100%;
+    border: 1px solid currentColor;
+    border-radius: var(--astro-form-rounded);
+    padding: .5rem;
+  }
+</style>
+<textarea class:list={classes} {name} {id} {cols} {rows} {...rest}>{value && value}</textarea>

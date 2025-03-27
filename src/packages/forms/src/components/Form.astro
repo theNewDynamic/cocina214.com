@@ -1,0 +1,101 @@
+---
+import type { FormType } from '@forms/index.d.ts'
+import prepareForm from '../util/prepareForm'
+import Input from './inputs/Input.astro'
+import Field from './Field.astro'
+import Submit from './Submit.astro'
+import Captcha from './Captcha.astro'
+
+type Props = {
+  form?: FormType;
+  classes?: string;
+}
+
+const { form, classes = "", ...rest } = Astro.props
+
+const {
+  action,
+  name,
+  method,
+  fields,
+  hiddenFields,
+  enctype,
+  charset,
+  captcha,
+  service,
+  submitCopy,
+  attributes = {}
+} = prepareForm(form)
+
+const netlify = service == 'netlify'
+---
+<style>
+  form{
+    --astro-form-rounded: 3px;
+    width: 100%;
+  }
+  form * {
+    box-sizing: border-box;
+  }
+  .wrapper{
+    margin-bottom: 1rem;
+  }
+  .wrapper .wrapper{
+    margin-bottom: 0;
+  }
+  input:not([type=checkbox]):not([type=radio]):not([type=submit]), select{
+    display:block;
+    width: 100%;
+    background-color: white;
+    border: 1px solid currentColor;
+    padding: .5rem .5rem;
+  }
+
+  input[type=submit]{
+    @apply bg-c-purple-500 text-white py-2 px-8 font-bold uppercase cursor-pointer;
+  }
+  input[type=submit]:hover{
+    @apply bg-c-purple-600;
+  }
+  label, .label{
+    display: block;
+    margin-bottom: .25rem;
+    font-size: 1.1em;
+  }
+  .required:after{
+    display: inline-block;
+    content:"*";
+    margin-left: .2rem;
+  }
+  [data-labelhack]{
+    display: none;
+  }
+</style>
+<form
+  class:list={[
+    "astro-tnd-forms",
+    classes
+  ]}
+  {action}
+  {name}
+  {enctype}
+  {method}
+  {netlify}
+  netlify-honeypot={netlify && !captcha && 'desired_choice_for_now' }
+  accept-charset={charset}
+  {...attributes}
+  {...rest}
+>
+  {fields && fields.map(field => (
+    <Field {field} {...rest} />
+  ))}
+  {hiddenFields && hiddenFields.map(({name, value})=>
+    <Input field={{
+      name,
+      value,
+      type: "hidden",
+    }} />
+  )}
+  <Captcha {service} {captcha} />
+  <Submit copy={submitCopy} {...rest} />
+</form>

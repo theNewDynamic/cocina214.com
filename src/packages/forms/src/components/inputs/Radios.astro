@@ -1,0 +1,16 @@
+---
+import Input from "./Input.astro";
+const { field, field: { name, id, value: fieldValue, options } } = Astro.props 
+---
+{options && options.map(({value, title, id})=> (
+  <div class="flex items-center ">
+    <Input field={{
+      name,
+      id,
+      type: "radio",
+      value,
+      checked: fieldValue && fieldValue == value
+     }} />
+     <label for={id} class="ml-2">{title}</label>
+  </div>
+))}

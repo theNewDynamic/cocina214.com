@@ -1,0 +1,12 @@
+---
+import type { Code } from 'astro:components'
+import Input from './inputs/Input.astro'
+const { copy, ...rest } = Astro.props
+
+---
+<div class="submit">
+  <Input field={{
+    type:"submit",
+    value:copy
+  }} {...rest} />
+</div>
