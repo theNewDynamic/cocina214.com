@@ -12,11 +12,7 @@ export const main = [
   {
     url: "/menus/",
     copy: "Menus"
-  },
-  {
-    url: "/shop/",
-    copy: "Order Now"
-  },
+  },  
   {
     url: "/news/",
     copy: "News"
